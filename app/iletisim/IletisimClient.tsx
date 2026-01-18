@@ -8,6 +8,8 @@ import { Phone, Mail, MapPin, Clock, Send, Globe } from "lucide-react";
 import { Button } from "@/app/components/ui/Button";
 import Link from "next/link";
 
+import { Footer } from "@/app/components/layout/Footer";
+
 export default function IletisimClient() {
     return (
         <main className="relative min-h-screen bg-[#0A0A0A] text-white selection:bg-gold selection:text-void overflow-hidden">
@@ -26,14 +28,10 @@ export default function IletisimClient() {
                     transition={{ duration: 0.8 }}
                     className="text-center mb-24"
                 >
-                    <div className="text-gold text-[10px] font-bold tracking-[0.4em] uppercase mb-6">
-                        BİZE ULAŞIN
-                    </div>
-                    <h1 className="text-4xl sm:text-6xl md:text-8xl font-serif font-black text-white mb-8 leading-[1.1]">
-                        Geleceğinizi <span className="text-gold italic">Konuşalım.</span>
-                    </h1>
+
+
                     <p className="text-white/40 text-lg max-w-2xl mx-auto font-light leading-relaxed">
-                        Hukuki süreçleriniz için ilk adımı bugün atın. Uzman ekibimizle size özel bir strateji geliştirmek için buradayız.
+                        Hukuki sorunlarınızın çözümü için profesyonel bir bakış açısına ihtiyacınız olduğunda yanınızdayız. Randevu talepleriniz ve sorularınız için bize ulaşın.
                     </p>
                 </motion.div>
 
@@ -91,7 +89,7 @@ export default function IletisimClient() {
                                 <div>
                                     <h3 className="text-lg font-bold mb-3 tracking-tight">Çalışma Saatlerimiz</h3>
                                     <p className="text-white/40 text-[15px] leading-relaxed font-light">
-                                        Hafta İçi: 09:00 - 18:30<br />
+                                        Hafta İçi: 09:00 - 17:00<br />
                                         Cumartesi: 10:00 - 14:00 (Ön Görüşme ile)
                                     </p>
                                 </div>
@@ -103,9 +101,7 @@ export default function IletisimClient() {
                             <p className="text-void/60 text-sm leading-relaxed mb-8 font-medium">
                                 Marmaris merkezli ofisimizle Türkiye'nin her ilinde profesyonel hukuki danışmanlık ve dava yönetimi sunuyoruz.
                             </p>
-                            <div className="flex items-center gap-2 font-black text-[10px] tracking-widest uppercase">
-                                <Globe size={16} /> NATIONAL NETWORK ACTIVE
-                            </div>
+
                         </div>
                     </div>
 
@@ -140,12 +136,12 @@ export default function IletisimClient() {
                                 </div>
                                 <div className="space-y-3 md:col-span-2">
                                     <label className="block text-[10px] text-white/30 uppercase font-black tracking-widest">YARDIM İSTEDİĞİNİZ KONU</label>
-                                    <select className="w-full bg-void border border-white/10 rounded-xl p-5 text-white focus:outline-none focus:border-gold/30 transition-all appearance-none">
-                                        <option>Genel Hukuki Danışmanlık</option>
-                                        <option>Ticaret ve Şirketler Hukuku</option>
-                                        <option>Gayrimenkul ve İnşaat Hukuku</option>
-                                        <option>Ceza Hukuku Savunma</option>
+                                    <select className="w-full bg-void border border-white/10 rounded-xl p-5 text-white focus:outline-none focus:border-gold/30 transition-all appearance-none cursor-pointer">
+                                        <option>Ceza Hukuku</option>
                                         <option>Aile ve Boşanma Hukuku</option>
+                                        <option>Gayrimenkul ve Kira Hukuku</option>
+                                        <option>Miras Hukuku</option>
+                                        <option>İdare ve Vergi Hukuku</option>
                                         <option>Diğer</option>
                                     </select>
                                 </div>
@@ -171,6 +167,7 @@ export default function IletisimClient() {
                 </div>
             </section>
 
+            <Footer />
             <FloatingActions />
         </main>
     );

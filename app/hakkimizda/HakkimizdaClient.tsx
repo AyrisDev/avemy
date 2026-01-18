@@ -5,6 +5,9 @@ import { motion } from "framer-motion";
 import { Navbar } from "@/app/components/layout/Navbar";
 import { FloatingActions } from "@/app/components/layout/FloatingActions";
 import { Shield, Target, Award, Users, Scale, Globe } from "lucide-react";
+import Image from "next/image";
+
+import { Footer } from "@/app/components/layout/Footer";
 
 const values = [
     {
@@ -47,10 +50,10 @@ export default function HakkimizdaClient() {
                         VİZYONUMUZ & DEĞERLERİMİZ
                     </div>
                     <h1 className="text-4xl sm:text-6xl md:text-[5rem] lg:text-[7rem] font-serif font-black text-white leading-[1.1] md:leading-[0.9] mb-12">
-                        Karşılıklı <span className="text-gold italic">Güven</span> İnşa Ediyoruz.
+                        Hukuki Birikim ve <span className="text-gold italic">Mesleki Sadakat.</span>
                     </h1>
-                    <p className="text-xl md:text-2xl text-white/40 leading-relaxed font-light max-w-2xl">
-                        EK Hukuk, klasik savunma anlayışını modern stratejiler ve kararlılıkla birleştirerek, Muğla Barosu çatısı altında profesyonel hukuki hizmetler sunar.
+                    <p className="text-xl md:text-2xl text-white/40 leading-relaxed font-light max-w-3xl">
+                        Muğla Barosu levhasına kayıtlı Av. Emina KARABUDAK liderliğinde, hukukun üstünlüğü ve mutlak gizlilik ilkeleri doğrultusunda, karmaşık uyuşmazlıklarda stratejik savunma ve efektif danışmanlık hizmeti sunmaktayız.
                     </p>
                 </motion.div>
             </section>
@@ -95,15 +98,20 @@ export default function HakkimizdaClient() {
                     </motion.div>
 
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
+                        initial={{ opacity: 0, x: 50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        className="relative aspect-square rounded-3xl overflow-hidden border border-white/10"
+                        className="relative aspect-[4/5] rounded-3xl overflow-hidden border border-white/10 group ml-auto w-full max-w-[320px] lg:max-w-[600px]"
                     >
-                        <div className="absolute inset-0 bg-gradient-to-t from-void via-transparent to-transparent z-10" />
-                        <div className="w-full h-full bg-[#151515] flex items-center justify-center">
-                            <Scale size={120} className="text-gold/20" />
-                        </div>
+                        <Image
+                            src="/emina_karabudak.jpg"
+                            alt="Av. Emina KARABUDAK"
+                            fill
+                            className="object-cover filter grayscale-[0.8] contrast-[1.1] brightness-[0.85] group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105"
+                            priority
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-void via-void/50 to-transparent opacity-80" />
+                        <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-void to-transparent z-10" />
                     </motion.div>
                 </div>
             </section>
@@ -154,6 +162,7 @@ export default function HakkimizdaClient() {
                 </div>
             </section>
 
+            <Footer />
             <FloatingActions />
         </main>
     );

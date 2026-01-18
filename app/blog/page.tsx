@@ -4,7 +4,7 @@ import directus from "@/lib/directus";
 import { readItems } from "@directus/sdk";
 
 export const metadata: Metadata = {
-    title: "Hukuk Rehberi | Güncel Makaleler | AVEMY",
+    title: "Hukuk Rehberi | Güncel Makaleler | EK Hukuk",
     description: "Hukuki gelişmeleri, uzman makalelerini ve yargı kararlarını takip edin.",
 };
 
@@ -13,7 +13,7 @@ export default async function Page() {
     try {
         posts = await directus.request(
             readItems('posts', {
-                fields: ['id', 'slug', 'title', 'seo_description', 'date_created', 'featured_image'],
+                fields: ['id', 'slug', 'title', 'seo_description', 'date_created'],
                 sort: ['-date_created'],
                 filter: {
                     status: { _eq: 'published' }

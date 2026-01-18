@@ -8,6 +8,7 @@ import { Navbar } from "@/app/components/layout/Navbar";
 import { FloatingActions } from "@/app/components/layout/FloatingActions";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { Footer } from "@/app/components/layout/Footer";
 
 const defaultFaqs = [
     {
@@ -313,6 +314,7 @@ export default function HizmetDetay({ params, initialService }: { params: { slug
                 </div>
             </section>
 
+            <Footer />
             <FloatingActions />
         </main>
     );

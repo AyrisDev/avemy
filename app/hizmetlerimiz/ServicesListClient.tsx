@@ -6,8 +6,8 @@ import { Navbar } from "@/app/components/layout/Navbar";
 import { FloatingActions } from "@/app/components/layout/FloatingActions";
 import Link from "next/link";
 import { ChevronRight, Building2, Gavel, Scale, ShieldCheck, Briefcase, Landmark } from "lucide-react";
-import Image from "next/image";
-import { getDirectusImage } from "@/lib/directus";
+
+import { Footer } from "@/app/components/layout/Footer";
 
 import { Service, defaultPractices } from "@/lib/constants";
 
@@ -71,6 +71,7 @@ export default function ServicesListClient({ initialServices }: { initialService
                 </div>
             </section>
 
+            <Footer />
             <FloatingActions />
         </main>
     );

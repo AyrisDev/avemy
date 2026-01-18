@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import { Navbar } from "@/app/components/layout/Navbar";
 import { FloatingActions } from "@/app/components/layout/FloatingActions";
 
+import { Footer } from "@/app/components/layout/Footer";
+
 export const metadata: Metadata = {
     title: "KVKK Aydınlatma Metni | EK Hukuk & Danışmanlık",
     description: "Kişisel verilerinizin işlenmesi ve korunması hakkındaki yasal bilgilendirme.",
@@ -68,6 +70,7 @@ export default function KVKKPage() {
                 </div>
             </section>
 
+            <Footer />
             <FloatingActions />
         </main>
     );

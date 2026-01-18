@@ -6,8 +6,10 @@ import { Navbar } from "@/app/components/layout/Navbar";
 import { FloatingActions } from "@/app/components/layout/FloatingActions";
 import Link from "next/link";
 import { Calendar, Clock, ArrowRight } from "lucide-react";
-import directus, { getDirectusImage } from "@/lib/directus";
+import directus from "@/lib/directus";
 import { readItems } from "@directus/sdk";
+
+import { Footer } from "@/app/components/layout/Footer";
 
 interface BlogPost {
     id: string;
@@ -15,7 +17,6 @@ interface BlogPost {
     title: string;
     seo_description: string;
     date_created: string;
-    featured_image: string;
     category?: {
         name: string;
     };
@@ -129,6 +130,7 @@ export default function BlogListClient({ initialPosts }: { initialPosts: BlogPos
                 )}
             </section>
 
+            <Footer />
             <FloatingActions />
         </main>
     );

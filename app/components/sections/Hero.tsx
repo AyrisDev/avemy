@@ -53,7 +53,7 @@ export const Hero = () => {
                             <span className="text-gold text-[10px] font-black tracking-[0.5em] uppercase">
                                 EK HUKUK & DANIŞMANLIK
                             </span>
-                            <span className="text-white/60 text-[11px] font-serif italic tracking-widest text-right">
+                            <span className="text-white/40 text-[11px] font-serif font-bold tracking-widest text-right">
                                 AV. EMİNA KARABUDAK
                             </span>
                         </div>

@@ -18,7 +18,7 @@ export default async function Page() {
         // For now, fetching all and we'll label them as articles.
         articles = await directus.request(
             readItems('posts', {
-                fields: ['id', 'slug', 'title', 'seo_description', 'date_created', 'featured_image', 'category'],
+                fields: ['id', 'slug', 'title', 'seo_description', 'date_created', 'category'],
                 sort: ['-date_created'],
                 filter: {
                     status: { _eq: 'published' }

@@ -6,8 +6,8 @@ import { Navbar } from "@/app/components/layout/Navbar";
 import { FloatingActions } from "@/app/components/layout/FloatingActions";
 import Link from "next/link";
 import { ChevronRight, Bookmark, Calendar, User } from "lucide-react";
-import Image from "next/image";
-import { getDirectusImage } from "@/lib/directus";
+
+import { Footer } from "@/app/components/layout/Footer";
 
 interface Article {
     id: string;
@@ -15,7 +15,6 @@ interface Article {
     title: string;
     seo_description: string;
     date_created: string;
-    featured_image: string;
     category?: { name: string } | string;
 }
 
@@ -94,7 +93,7 @@ export default function MakalelerListClient({ initialArticles }: { initialArticl
 
                                         <div className="pt-6 flex items-center justify-between">
                                             <div className="flex items-center gap-6 text-[10px] text-white/30 font-bold tracking-tighter uppercase">
-                                                <span className="flex items-center gap-2"><User size={12} className="text-gold" /> PRESTIGE LAW ACADEMY</span>
+                                                <span className="flex items-center gap-2"><User size={12} className="text-gold" /> EK HUKUK & DANIŞMANLIK</span>
                                                 <span className="flex items-center gap-2"><Calendar size={12} className="text-gold" /> {new Date(article.date_created).toLocaleDateString("tr-TR")}</span>
                                             </div>
                                             <div className="flex items-center gap-3 text-gold text-[10px] font-bold tracking-widest uppercase opacity-0 group-hover:opacity-100 transform translate-x-4 group-hover:translate-x-0 transition-all duration-500">
@@ -115,6 +114,7 @@ export default function MakalelerListClient({ initialArticles }: { initialArticl
                 </div>
             </section>
 
+            <Footer />
             <FloatingActions />
         </main>
     );

@@ -7,8 +7,10 @@ import { FloatingActions } from "@/app/components/layout/FloatingActions";
 import { Calendar, Clock, Share2, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/app/components/ui/Button";
-import directus, { getDirectusImage } from "@/lib/directus";
+import directus from "@/lib/directus";
 import { readItems } from "@directus/sdk";
+
+import { Footer } from "@/app/components/layout/Footer";
 
 interface BlogPost {
     id: string;
@@ -97,13 +99,33 @@ export default function BlogClient({ params, initialPost }: { params: { slug: st
             } catch (err) {
                 console.error("Error sharing:", err);
             }
-        } else {
+        } else if (navigator.clipboard && navigator.clipboard.writeText) {
             try {
                 await navigator.clipboard.writeText(window.location.href);
                 setCopied(true);
                 setTimeout(() => setCopied(false), 2000);
             } catch (err) {
                 console.error("Error copying link:", err);
+            }
+        } else {
+            // Fallback for browsers without clipboard API or non-secure contexts
+            try {
+                const textArea = document.createElement("textarea");
+                textArea.value = window.location.href;
+                textArea.style.position = "fixed";
+                textArea.style.left = "-9999px";
+                textArea.style.top = "0";
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+                const successful = document.execCommand('copy');
+                document.body.removeChild(textArea);
+                if (successful) {
+                    setCopied(true);
+                    setTimeout(() => setCopied(false), 2000);
+                }
+            } catch (err) {
+                console.error("Fallback copy failed:", err);
             }
         }
     };
@@ -139,9 +161,7 @@ export default function BlogClient({ params, initialPost }: { params: { slug: st
                         <h1 className="text-4xl md:text-6xl font-serif font-black text-white mb-10 leading-[1.1] tracking-tight">
                             {post.title}
                         </h1>
-                        <p className="text-white/40 text-lg md:text-xl font-light leading-relaxed max-w-3xl italic">
-                            {post.seo_description}
-                        </p>
+
 
                     </header>
 
@@ -192,6 +212,7 @@ export default function BlogClient({ params, initialPost }: { params: { slug: st
                 </motion.div>
             </article>
 
+            <Footer />
             <FloatingActions />
         </main>
     );

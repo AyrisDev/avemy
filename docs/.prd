@@ -1,0 +1,116 @@
+xPRD: Project "Antigravity" (Lawyer Portfolio & Lead Gen)
+Versiyon: 1.0 Tarih: 18 Ocak 2026 Platform: Web (Mobile First) Stack: Next.js 14 (App Router), Tailwind CSS, Framer Motion, Directus SDK.
+
+1. Yönetici Özeti
+Bu proje, bir avukat için yüksek dönüşüm odaklı, Google Ads uyumlu ve SEO dostu bir web sitesidir. Tasarım dili olarak "Antigravity Design System" benimsenecektir. Amaç; kullanıcının siteye girdiği anda modern, güvenilir ve teknolojik olarak üstün bir hizmet alacağını hissetmesidir. İçerikler dinamik olarak Directus CMS'ten çekilecektir.
+
+2. "Antigravity" Tasarım Dili & UX Prensipleri
+Bu tasarım sistemi, klasik "blok blok" dizilen hukuk sitelerinin aksine, derinlik ve hareket hissi üzerine kuruludur.
+
+Glassmorphism (Cam Efekti): Kartlar, menüler ve formlar; arka planı hafifçe flulaştıran (backdrop-blur), yarı saydam katmanlar halinde olacak.
+
+Weightless Motion (Ağırlıksız Hareket): Sayfa kaydırıldığında elementler "küt diye" gelmeyecek; Framer Motion kullanılarak hafif bir gecikme ve yumuşaklıkla (spring physics) süzülerek yerine oturacak.
+
+Derinlik (Depth): Z-Axis kullanımı. Önemli CTA (Aksiyon) butonları ve formlar, gölgelendirme ve hafif glow (parlama) efektleriyle diğer elementlerden "havada" duruyor gibi ayrışacak.
+
+Renk Paleti:
+
+Zemin: Deep Void Blue (#0f172a - Slate 900) veya Clean White (Tercihe göre Dark/Light mode).
+
+Accent (Vurgu): Adalet Altını (Metallic Gold - #d4af37) ve Güven Mavisi.
+
+Typography: Başlıklar Playfair Display (Otorite), Metinler Inter veya Geist (Modernite).
+
+3. Sayfa Mimarisi ve İçerik Akışı
+3.1. Global Bileşenler
+
+Antigravity Navbar: Sayfa aşağı kaydıkça küçülen, arka planı buzlu cam (frosted glass) olan, en üstte sabit (sticky) menü.
+
+Floating Action Button (FAB): Sağ altta sürekli süzülen "WhatsApp" ve "Hemen Ara" butonları.
+
+3.2. Anasayfa (/)
+
+Hero Section: Tam ekran. Arka planda yavaşça hareket eden soyut hukuk materyalleri (terazi, kitap vs. - sinematik video veya görsel). Önde avukatın "cut-out" (arkası şeffaf) görseli ve "Parallax" efektiyle kayan slogan.
+
+Trust Strip: Referanslar veya istatistikler (Dava sayısı vb.). Yatay kayan (marquee) bant.
+
+Hizmetler (Cards): Hover olunca yukarı doğru hafifçe havalanan (scale + y-axis move) cam kartlar.
+
+About (Split Screen): Avukatın hikayesi. Görsel sabit dururken metin yanından akar (Sticky scroll).
+
+3.3. Dinamik Hizmet Landing Sayfaları (/hizmet/[slug])
+
+Google Ads buraya trafik basacak.
+
+Hook (Kanca): "Boşanma Sürecinde Haklarınızı Biliyor musunuz?" (Soru odaklı başlık).
+
+Problem & Çözüm: Kullanıcının derdini anlayan metinler.
+
+Sticky Lead Form: Sayfa kayarken sağ tarafta veya mobilde alt tarafta asılı kalan iletişim formu.
+
+FAQ Accordion: Tıklandığında yumuşakça açılan sık sorulan sorular.
+
+3.4. Blog (/blog & /blog/[slug])
+
+Directus'tan çekilecek.
+
+Readability Mode: Okuma kolaylığı için temiz tipografi, göz yormayan satır aralıkları.
+
+4. Teknik Gereksinimler (Next.js Spesifikasyonu)
+4.1. Veri Çekme (Data Fetching)
+
+Tüm veriler lib/directus.ts üzerinden çekilecek.
+
+ISR (Incremental Static Regeneration): Blog ve hizmet sayfaları revalidate: 60 veya 3600 ile statik üretilecek ancak güncel kalacak.
+
+Görseller Next/Image bileşeni ile Directus Assets endpoint'inden optimize edilerek sunulacak.
+
+4.2. Performans (Core Web Vitals)
+
+LCP (Largest Contentful Paint) < 2.5s.
+
+CLS (Cumulative Layout Shift) < 0.1 (Antigravity animasyonları layout'u bozmamalı).
+
+Fontlar next/font ile optimize edilecek.
+
+4.3. SEO
+
+generateMetadata fonksiyonu her sayfa için dinamik Title/Description üretecek.
+
+Structure Data (JSON-LD): LegalService ve Article şemaları eklenecek.
+
+5. Uygulama Adımları (Developer & AI Prompt)
+Geliştirmeye başlamak için aşağıdaki yapıyı kullanacağız.
+
+Klasör Yapısı (Öngörülen)
+
+Bash
+/app
+  /components
+    /ui             # Buttons, Inputs (Antigravity style)
+    /sections       # Hero, Services, Footer
+    /layout         # Navbar, StickyActions
+  /lib
+    directus.ts     # CMS bağlantısı
+    utils.ts        # Helperlar
+  /(routes)
+    page.tsx        # Anasayfa
+    /hizmet/[slug]  # Dinamik Hizmetler
+    /blog/[slug]    # Dinamik Blog
+🚀 Başlangıç Prompt'u (Cursor / v0 / Claude için)
+
+Bu projeyi kodlamaya başlarken AI asistanına şu promptu verebilirsin:
+
+"I am building a high-end lawyer website using Next.js 14, Tailwind CSS, and Framer Motion. The design system is called 'Antigravity'.
+
+Core Design Principles:
+
+Glassmorphism: Heavy use of backdrop-blur-md, bg-white/10, and subtle white borders for cards.
+
+Smooth Motion: All elements should enter the viewport with a gentle staggered fade-up animation using Framer Motion.
+
+Typography: Playfair Display for headings (Serif), Inter for body.
+
+Colors: Navy Blue (bg-slate-900) background, Gold accents.
+
+Task: Create the Hero Section component. It should feature a parallax background effect, a high-quality cut-out image of a lawyer on the right, and a floating glass-effect card on the left containing the H1 headline ('Expert Legal Defense') and a 'Consult Now' CTA button. The button should have a glow effect on hover."

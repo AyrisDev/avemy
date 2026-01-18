@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { Scale } from "lucide-react";
 
 export const Navbar = () => {
+    const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const { scrollY } = useScroll();
 
@@ -33,51 +34,102 @@ export const Navbar = () => {
     ];
 
     return (
-        <motion.nav
-            style={{ background }}
-            className={cn(
-                "fixed top-0 left-0 right-0 z-50 h-24 flex items-center transition-all duration-300 px-6 md:px-12",
-                isScrolled ? "backdrop-blur-md border-b border-white/5" : ""
-            )}
-        >
-            <div className="max-w-7xl mx-auto w-full flex items-center justify-between">
-                {/* Logo Section */}
-                <div className="flex-1 flex items-center">
-                    <Link href="/" className="flex items-center gap-4 group">
-                        <div className="w-9 h-9 bg-gold rounded-sm flex items-center justify-center transform rotate-45 group-hover:rotate-[225deg] transition-transform duration-700">
-                            <div className="w-5 h-5 bg-void rounded-sm -rotate-45 flex items-center justify-center">
-                                <div className="w-2 h-2 bg-gold rounded-full" />
+        <>
+            <motion.nav
+                style={{ background }}
+                className={cn(
+                    "fixed top-0 left-0 right-0 z-[60] h-24 flex items-center transition-all duration-300 px-6 md:px-12",
+                    isScrolled ? "backdrop-blur-md border-b border-white/5" : ""
+                )}
+            >
+                <div className="max-w-7xl mx-auto w-full flex items-center justify-between">
+                    {/* Logo Section */}
+                    <div className="flex-1 flex items-center">
+                        <Link href="/" className="flex items-center gap-4 group">
+                            <div className="w-9 h-9 bg-gold rounded-sm flex items-center justify-center transform rotate-45 group-hover:rotate-[225deg] transition-transform duration-700">
+                                <div className="w-5 h-5 bg-void rounded-sm -rotate-45 flex items-center justify-center">
+                                    <div className="w-2 h-2 bg-gold rounded-full" />
+                                </div>
                             </div>
-                        </div>
-                        <span className="text-xl font-serif font-black tracking-tighter text-white uppercase flex items-center">
-                            PRESTIGE&nbsp;<span className="font-medium">LAW</span>
-                        </span>
-                    </Link>
-                </div>
-
-                {/* Center Menu */}
-                <div className="hidden md:flex items-center justify-center gap-12">
-                    {menuItems.map((item) => (
-                        <Link
-                            key={item.label}
-                            href={item.href}
-                            className="text-[10px] font-bold text-white/50 hover:text-white transition-colors duration-200 tracking-[0.3em] uppercase"
-                        >
-                            {item.label}
+                            <span className="text-xl font-serif font-black tracking-tighter text-white uppercase flex items-center">
+                                EK&nbsp;<span className="font-bold text-gold">HUKUK</span>
+                            </span>
                         </Link>
+                    </div>
+
+                    {/* Desktop Center Menu */}
+                    <div className="hidden md:flex items-center justify-center gap-12">
+                        {menuItems.map((item) => (
+                            <Link
+                                key={item.label}
+                                href={item.href}
+                                className="text-[10px] font-bold text-white/50 hover:text-white transition-colors duration-200 tracking-[0.3em] uppercase"
+                            >
+                                {item.label}
+                            </Link>
+                        ))}
+                    </div>
+
+                    {/* Mobile Menu Toggle */}
+                    <div className="flex-1 flex md:hidden justify-end">
+                        <button
+                            onClick={() => setIsOpen(!isOpen)}
+                            className="w-10 h-10 flex flex-col items-center justify-center gap-1.5"
+                        >
+                            <motion.span
+                                animate={isOpen ? { rotate: 45, y: 7.5 } : { rotate: 0, y: 0 }}
+                                className="w-6 h-[1px] bg-white block transition-transform"
+                            />
+                            <motion.span
+                                animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
+                                className="w-6 h-[1px] bg-white block"
+                            />
+                            <motion.span
+                                animate={isOpen ? { rotate: -45, y: -7.5 } : { rotate: 0, y: 0 }}
+                                className="w-6 h-[1px] bg-white block transition-transform"
+                            />
+                        </button>
+                    </div>
+                </div>
+            </motion.nav>
+
+            {/* Mobile Menu Overlay */}
+            <motion.div
+                initial={{ opacity: 0, x: "100%" }}
+                animate={isOpen ? { opacity: 1, x: 0 } : { opacity: 0, x: "100%" }}
+                transition={{ type: "spring", damping: 25, stiffness: 200 }}
+                className="fixed inset-0 z-[55] bg-void flex flex-col items-center justify-center md:hidden"
+            >
+                <div className="flex flex-col items-center gap-8">
+                    {menuItems.map((item, i) => (
+                        <motion.div
+                            key={item.label}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={isOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                            transition={{ delay: i * 0.1 + 0.2 }}
+                        >
+                            <Link
+                                href={item.href}
+                                onClick={() => setIsOpen(false)}
+                                className="text-3xl font-serif font-black text-white hover:text-gold transition-colors tracking-tight"
+                            >
+                                {item.label}
+                            </Link>
+                        </motion.div>
                     ))}
                 </div>
 
-                {/* Right Buttons Section */}
-                <div className="flex-1 flex items-center justify-end gap-3 text-right">
-                    <button className="hidden lg:block border border-white/20 text-white/90 px-7 py-2.5 rounded-full text-[9px] font-bold tracking-[0.2em] hover:bg-white/5 transition-all">
-                        PORTAL
-                    </button>
-                    <button className="bg-[#FFCC00] text-void px-9 py-2.5 rounded-full text-[10px] font-bold tracking-[0.2em] hover:brightness-110 shadow-[0_4px_20px_rgba(255,204,0,0.2)] transition-all">
-                        İLETİŞİM
-                    </button>
-                </div>
-            </div>
-        </motion.nav>
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={isOpen ? { opacity: 1 } : { opacity: 0 }}
+                    transition={{ delay: 0.8 }}
+                    className="absolute bottom-12 text-center"
+                >
+                    <p className="text-white/20 text-[10px] font-bold tracking-[0.5em] uppercase">
+                        EK HUKUK & DANIŞMANLIK
+                    </p>
+                </motion.div>
+            </motion.div>
+        </>
     );
 };

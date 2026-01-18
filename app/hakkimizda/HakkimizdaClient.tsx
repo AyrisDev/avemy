@@ -46,7 +46,7 @@ export default function HakkimizdaClient() {
                     <div className="text-gold text-[10px] font-bold tracking-[0.4em] uppercase mb-8">
                         VİZYONUMUZ & DEĞERLERİMİZ
                     </div>
-                    <h1 className="text-6xl md:text-9xl font-serif font-black text-white leading-[0.9] mb-12">
+                    <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-serif font-black text-white leading-[1.1] md:leading-[0.9] mb-12">
                         Adaleti <span className="text-gold italic">Sanata</span> Dönüştürüyoruz.
                     </h1>
                     <p className="text-xl md:text-2xl text-white/40 leading-relaxed font-light max-w-2xl">

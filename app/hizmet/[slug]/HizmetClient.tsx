@@ -96,7 +96,7 @@ export default function HizmetDetay({ params, initialService }: { params: { slug
                         </span>
                     </div>
 
-                    <h1 className="text-6xl md:text-[10rem] font-serif font-black text-white leading-[0.85] mb-16 tracking-tighter">
+                    <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-[10rem] font-serif font-black text-white leading-[1.1] md:leading-[0.85] mb-16 tracking-tighter">
                         {service.Title}
                     </h1>
 

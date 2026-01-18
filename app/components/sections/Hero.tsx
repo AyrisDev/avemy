@@ -19,23 +19,24 @@ export const Hero = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent z-10" />
             </div>
 
-            <div className="container mx-auto px-6 relative z-20 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            <div className="container mx-auto px-6 relative z-20 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center pt-10 lg:pt-0">
                 {/* Person Image (Left) */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 1.5, ease: "easeOut" }}
-                    className="lg:col-span-6 relative h-[70vh] lg:h-[90vh]"
+                    className="lg:col-span-6 relative h-[40vh] md:h-[60vh] lg:h-[90vh]"
                 >
                     <div className="relative w-full h-full overflow-hidden">
                         <img
                             src="/lawyer_v3.png"
                             alt="Elite Counsel"
-                            className="w-full h-full object-contain object-left filter grayscale-[0.8] contrast-[1.1] brightness-[0.85] hover:grayscale-0 transition-all duration-1000 scale-[0.8] origin-left"
+                            className="w-full h-full object-contain object-center lg:object-left filter grayscale-[0.8] contrast-[1.1] brightness-[0.85] hover:grayscale-0 transition-all duration-1000 scale-[0.9] lg:scale-[1] origin-center lg:origin-left"
                             loading="eager"
                         />
                         {/* Subtle Right Blend to ensure text contrast if needed */}
-                        <div className="absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-[#0A0A0A] to-transparent z-10" />
+                        <div className="absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-[#0A0A0A] to-transparent z-10 hidden lg:block" />
+                        <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-[#0A0A0A] to-transparent z-10 lg:hidden" />
                     </div>
                 </motion.div>
 
@@ -49,58 +50,45 @@ export const Hero = () => {
                     <div className="flex items-center gap-4 mb-8">
                         <div className="w-16 h-[1px] bg-gold" />
                         <span className="text-gold text-[10px] font-black tracking-[0.5em] uppercase">
-                            PRESTIGE LAW INTERNATIONAL
+                            EK HUKUK & DANIŞMANLIK
                         </span>
                     </div>
 
-                    <h1 className="text-7xl md:text-7xl font-serif font-black text-white leading-[0.85] mb-10 tracking-tighter">
-                        Güçlü Temsil, <br />
-                        <span className="text-gold italic"> Sarsılmaz </span> <br />
+                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-black text-white leading-[1.1] lg:leading-[0.85] mb-8 lg:mb-10 tracking-tighter">
+                        Güçlü Temsil, <br className="hidden md:block" />
+                        <span className="text-gold italic"> Sarsılmaz </span> <br className="hidden md:block" />
                         Adalet.
                     </h1>
 
-                    <p className="text-xl text-white/40 mb-12 max-w-xl leading-relaxed font-light">
+                    <p className="text-base lg:text-xl text-white/40 mb-8 lg:mb-12 max-w-xl leading-relaxed font-light">
                         Türkiye'nin en karmaşık hukuki süreçlerinde, mutlak gizlilik ve üstün stratejik başarı ile yanınızdayız. Geleceğinizi tesadüflere değil, tecrübeye emanet edin.
                     </p>
 
-                    <div className="flex flex-wrap gap-8 items-center">
-                        <Link href="/iletisim">
+                    <div className="flex flex-col sm:flex-row gap-6 lg:gap-8 items-start sm:items-center w-full">
+                        <Link href="/iletisim" className="w-full sm:w-auto">
                             <motion.button
                                 whileHover={{ scale: 1.02, y: -2 }}
                                 whileTap={{ scale: 0.98 }}
-                                className="px-12 py-6 bg-gold text-void font-black text-[11px] tracking-[0.3em] uppercase shadow-2xl shadow-gold/20 hover:brightness-110 transition-all"
+                                className="w-full sm:w-auto px-10 lg:px-12 py-5 lg:py-6 bg-gold text-void font-black text-[10px] lg:text-[11px] tracking-[0.3em] uppercase shadow-2xl shadow-gold/20 hover:brightness-110 transition-all"
                             >
                                 ŞİMDİ RANDEVU ALIN
                             </motion.button>
                         </Link>
 
                         <div className="flex flex-col">
-                            <span className="text-white/20 text-[9px] font-black tracking-widest uppercase mb-1">KIŞISEL DANIŞMANLIK</span>
+                            <span className="text-white/20 text-[8px] lg:text-[9px] font-black tracking-widest uppercase mb-1">KIŞISEL DANIŞMANLIK</span>
                             <span className="text-white font-serif italic text-lg">+90 (212) 555 00 00</span>
                         </div>
                     </div>
 
                     {/* Branding Decorative Text */}
-                    <div className="mt-20 opacity-5 select-none pointer-events-none">
-                        <span className="text-[120px] font-serif font-black text-white leading-none">PRESTIGE</span>
+                    <div className="mt-16 lg:mt-20 opacity-5 select-none pointer-events-none hidden md:block">
+                        <span className="text-[120px] font-serif font-black text-white leading-none uppercase">EK HUKUK</span>
                     </div>
                 </motion.div>
             </div>
 
-            {/* Bottom Floating Button */}
-            <motion.button
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.5 }}
-                className="absolute bottom-12 right-12 hidden lg:flex items-center gap-4 bg-gold px-6 py-4 rounded-full shadow-2xl group"
-            >
-                <div className="w-8 h-8 rounded-full bg-void/10 flex items-center justify-center">
-                    <Calendar size={16} className="text-void" />
-                </div>
-                <span className="text-void font-bold text-[10px] tracking-widest uppercase">
-                    ÜCRETSİZ DANIŞMANLIK
-                </span>
-            </motion.button>
+
         </section>
     );
 };

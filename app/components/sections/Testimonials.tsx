@@ -21,18 +21,16 @@ export const Testimonials = () => {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
-                    className="max-w-4xl mx-auto"
+                    className="max-w-5xl mx-auto"
                 >
-                    <p className="text-3xl md:text-5xl font-serif font-medium text-white italic leading-tight mb-12">
-                        "Prestige Law tarafından sunulan stratejik öngörü ve mutlak gizlilik seviyesi hukuk sektöründe eşsizdir. Onlar sadece dava kazanmıyorlar; mirasları koruyorlar."
+                    <p className="text-3xl md:text-5xl font-serif font-black text-white italic leading-tight mb-16">
+                        "Her şey kanun yapmaktan ibaret değildir. Aksine her şey o kanunları uygulamak ve uygulattırmaktan ibarettir."
                     </p>
 
                     <footer className="flex flex-col items-center">
-                        <div className="text-white font-bold tracking-[0.2em] uppercase mb-1">
-                            ALEXANDER VANCE
-                        </div>
-                        <div className="text-gold text-[10px] font-bold tracking-[0.3em] uppercase">
-                            CEO. GLOBAL LOGISTICS CORP
+                        <div className="w-12 h-[1px] bg-gold mb-8 opacity-40" />
+                        <div className="text-gold font-serif font-black text-2xl md:text-3xl tracking-[0.1em] mb-2 ">
+                            Mustafa Kemal ATATÜRK
                         </div>
                     </footer>
                 </motion.blockquote>

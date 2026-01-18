@@ -11,7 +11,7 @@ export default function Home() {
     <main className="relative min-h-screen bg-[#0A0A0A] selection:bg-gold selection:text-void">
       <Navbar />
       <Hero />
-      <TrustStrip />
+
       <Services />
       <Testimonials />
 
@@ -26,7 +26,7 @@ export default function Home() {
                   <div className="w-4 h-4 text-white -rotate-45 font-bold flex items-center justify-center">P</div>
                 </div>
                 <span className="text-xl font-serif font-black tracking-tighter text-white">
-                  PRESTIGE<span className="text-gold">LAW</span>
+                  EK<span className="text-gold">HUKUK</span>
                 </span>
               </div>
               <p className="text-white/40 text-[13px] leading-relaxed max-w-xs">
@@ -76,7 +76,7 @@ export default function Home() {
 
           <div className="pt-12 border-t border-white/5 flex flex-col md:row items-center justify-between gap-6">
             <div className="text-white/20 text-[9px] font-bold tracking-[0.2em] uppercase">
-              © 2024 PRESTIGE LAW INTERNATIONAL. TÜM HAKLARI SAKLIDIR.
+              © 2024 EK HUKUK. TÜM HAKLARI SAKLIDIR.
             </div>
             <div className="flex gap-8 text-white/20 text-[9px] font-bold tracking-[0.2em] uppercase">
               <a href="#" className="hover:text-white transition-colors">MÜVEKKİL PANELİ</a>

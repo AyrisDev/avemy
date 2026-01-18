@@ -18,7 +18,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Prestige Law International | Elit Hukuki Temsil",
+  title: "EK Hukuk & Danışmanlık | Elit Hukuki Temsil",
   description: "En karmaşık hukuki meseleler için üst düzey temsil. Gizlilik, strateji ve eşsiz sonuçlar.",
 };
 

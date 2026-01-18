@@ -28,7 +28,7 @@ export default function IletisimClient() {
                     <div className="text-gold text-[10px] font-bold tracking-[0.4em] uppercase mb-6">
                         BİZE ULAŞIN
                     </div>
-                    <h1 className="text-6xl md:text-8xl font-serif font-black text-white mb-8">
+                    <h1 className="text-4xl sm:text-6xl md:text-8xl font-serif font-black text-white mb-8 leading-[1.1]">
                         Geleceğinizi <span className="text-gold italic">Konuşalım.</span>
                     </h1>
                     <p className="text-white/40 text-lg max-w-2xl mx-auto font-light leading-relaxed">

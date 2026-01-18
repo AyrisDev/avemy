@@ -14,11 +14,11 @@ export async function generateMetadata({ params }: { params: { slug: string } })
         );
         const service = response?.[0] as any;
         return {
-            title: service ? `${service.Title} | Prestige Law` : "Hizmet Bulunamadı | Prestige Law",
+            title: service ? `${service.Title} | EK Hukuk` : "Hizmet Bulunamadı | EK Hukuk",
             description: service?.Short_Description || "Profesyonel hukuk çözümleri.",
         };
     } catch (error) {
-        return { title: "Hizmetlerimiz | Prestige Law" };
+        return { title: "Hizmetlerimiz | EK Hukuk" };
     }
 }
 

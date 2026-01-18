@@ -4,7 +4,7 @@ import directus from "@/lib/directus";
 import { readItems } from "@directus/sdk";
 
 export const metadata: Metadata = {
-    title: "Akademik Makaleler & Hukuki Analizler | Prestige Law",
+    title: "Akademik Makaleler & Hukuki Analizler | EK Hukuk",
     description: "Hukuk dünyasındaki güncel gelişmeleri, derinlemesine analizleri ve çözüm önerilerini içeren akademik makalelerimiz.",
 };
 

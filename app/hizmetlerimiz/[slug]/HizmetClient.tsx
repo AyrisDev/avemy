@@ -55,7 +55,7 @@ export default function HizmetDetay({ params, initialService }: { params: { slug
                 >
                     <Scale size={64} className="text-gold/20 mx-auto mb-8" />
                     <h1 className="text-4xl font-serif font-black mb-6 italic tracking-tight">Hizmet Bulunamadı</h1>
-                    <Link href="/hizmet" className="text-gold flex items-center justify-center gap-3 uppercase tracking-[0.4em] font-black text-[10px] hover:gap-5 transition-all">
+                    <Link href="/hizmetlerimiz" className="text-gold flex items-center justify-center gap-3 uppercase tracking-[0.4em] font-black text-[10px] hover:gap-5 transition-all">
                         TÜM HİZMETLER <ArrowRight size={14} />
                     </Link>
                 </motion.div>
@@ -110,7 +110,7 @@ export default function HizmetDetay({ params, initialService }: { params: { slug
                                 <ShieldCheck size={20} />
                             </div>
                             <div className="text-[10px] font-black tracking-widest uppercase text-white/30">
-                                ANTIGRAVITY <br /> SECURED
+                                EK HUKUK <br /> GÜVENCESİ
                             </div>
                         </div>
                     </div>
@@ -130,11 +130,10 @@ export default function HizmetDetay({ params, initialService }: { params: { slug
                                 viewport={{ once: true }}
                                 transition={{ duration: 1 }}
                                 className="prose prose-invert prose-stone max-w-none 
-                                text-white/60 text-xl leading-[2] font-light
-                                prose-headings:font-serif prose-headings:text-white prose-headings:font-black prose-headings:mt-24 prose-headings:mb-12
-                                prose-p:mb-12
+                                text-white/70 text-lg md:text-xl leading-[1.8] font-light
+                                prose-headings:text-white prose-headings:font-serif prose-headings:font-black prose-headings:tracking-tight
                                 prose-strong:text-white prose-strong:font-bold
-                                prose-blockquote:border-l-gold prose-blockquote:bg-gold/5 prose-blockquote:py-12 prose-blockquote:px-16 prose-blockquote:rounded-r-[40px] prose-blockquote:italic prose-blockquote:text-white/90 prose-blockquote:font-serif prose-blockquote:text-3xl prose-blockquote:shadow-2xl prose-blockquote:shadow-gold/5"
+                                prose-p:mb-8"
                                 dangerouslySetInnerHTML={{ __html: service.Content }}
                             />
                         ) : (
@@ -143,7 +142,7 @@ export default function HizmetDetay({ params, initialService }: { params: { slug
                                     Stratejik Yol Haritası
                                 </h2>
                                 <p className="text-xl text-white/50 leading-relaxed font-light max-w-2xl">
-                                    Prestige Law Academy standartlarında hazırlanan süreç yönetimi ile her ihtimali hesaplıyor, sizi hedefinize en güvenli yoldan ulaştırıyoruz.
+                                    EK Hukuk standartlarında hazırlanan süreç yönetimi ile her ihtimali hesaplıyor, sizi hedefinize en güvenli yoldan ulaştırıyoruz.
                                 </p>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                     {(service.features || [
@@ -252,7 +251,7 @@ export default function HizmetDetay({ params, initialService }: { params: { slug
                                         <input
                                             type="text"
                                             className="w-full bg-void/50 border border-white/10 rounded-2xl p-6 text-white focus:outline-none focus:border-gold/40 transition-all placeholder:text-white/5 backdrop-blur-sm"
-                                            placeholder="iletisim@prestige.com"
+                                            placeholder="info@aveminakarabudak.com"
                                         />
                                     </div>
                                     <Button variant="gold" className="w-full py-8 rounded-2xl flex gap-4 items-center justify-center font-black text-[11px] tracking-[0.3em] uppercase hover:brightness-110 shadow-2xl shadow-gold/10 transform active:scale-95 transition-all">
@@ -266,7 +265,7 @@ export default function HizmetDetay({ params, initialService }: { params: { slug
                                         <span className="text-[10px] text-white/30 font-bold uppercase tracking-widest">HIZLI YANIT SİSTEMİ AKTİF</span>
                                     </div>
                                     <p className="text-[10px] text-white/20 font-medium uppercase tracking-widest leading-relaxed px-4">
-                                        Verileriniz <span className="text-gold/50 underline underline-offset-4 cursor-pointer hover:text-gold transition-colors">KVKK</span> uyarınca korunmaktadır.
+                                        Verileriniz <Link href="/kvkk" className="text-gold/50 underline underline-offset-4 cursor-pointer hover:text-gold transition-colors">KVKK</Link> uyarınca korunmaktadır.
                                     </p>
                                 </div>
                             </div>

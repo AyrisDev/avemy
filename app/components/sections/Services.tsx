@@ -2,33 +2,33 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Building2, Users, Shield, Briefcase, ChevronRight } from "lucide-react";
+import { Gavel, Users, Landmark, Briefcase, ChevronRight } from "lucide-react";
 
 import Link from "next/link";
 
 const practices = [
     {
-        title: "Ticaret ve Şirketler Hukuku",
-        slug: "ticaret-ve-sirketler-hukuku",
-        description: "Küresel şirketler, birleşme ve devralmalar için sofistike hukuki çözümler.",
-        icon: <Building2 className="text-gold" size={24} />,
+        title: "Ceza Hukuku",
+        slug: "ceza-hukuku",
+        description: "Muğla ve Marmaris genelinde soruşturma ve kovuşturma süreçlerinde etkin savunma ve hak arama.",
+        icon: <Gavel className="text-gold" size={24} />,
     },
     {
         title: "Aile ve Boşanma Hukuku",
         slug: "aile-ve-bosanma-hukuku",
-        description: "Yüksek malvarlıklı aile ve yerel meseleler için gizli ve uzman temsil.",
+        description: "Boşanma, velayet ve mal paylaşımı süreçlerinde profesyonel ve sonuç odaklı hukuki destek.",
         icon: <Users className="text-gold" size={24} />,
     },
     {
-        title: "Fikri Mülkiyet Hukuku",
-        slug: "fikri-mulkiyet-hukuku",
-        description: "Küresel inovasyonlarınızı ve marka kimliğinizi titiz stratejilerle koruyoruz.",
-        icon: <Shield className="text-gold" size={24} />,
+        title: "Gayrimenkul Hukuku",
+        slug: "gayrimenkul-hukuku",
+        description: "Tapu iptal tescil, kira uyuşmazlıkları ve gayrimenkul satış süreçlerinde hukuki güvenlik.",
+        icon: <Landmark className="text-gold" size={24} />,
     },
     {
-        title: "Varlık Yönetimi ve Miras",
+        title: "Varlık ve Miras Yönetimi",
         slug: "varlik-ve-miras-yonetimi",
-        description: "Ultra yüksek net değerli müvekkiller için stratejik varlık yönetimi ve miras koruması.",
+        description: "Miras taksimi, vasiyetname hazırlama ve miras hukukundan doğan tüm uyuşmazlıkların çözümü.",
         icon: <Briefcase className="text-gold" size={24} />,
     },
 ];
@@ -39,14 +39,12 @@ export const Services = () => {
             <div className="container mx-auto px-6">
                 <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
                     <div>
-                        <div className="text-gold text-[10px] font-bold tracking-[0.4em] uppercase mb-4">
-                            ELİT YETKİNLİKLER
-                        </div>
+
                         <h2 className="text-5xl font-serif font-black text-white">
                             Uzmanlık Alanları
                         </h2>
                     </div>
-                    <Link href="/hizmet" className="flex items-center gap-2 text-white/40 text-[10px] font-bold tracking-widest uppercase hover:text-gold transition-colors group">
+                    <Link href="/hizmetlerimiz" className="flex items-center gap-2 text-white/40 text-[10px] font-bold tracking-widest uppercase hover:text-gold transition-colors group">
                         TÜM HİZMETLERİ İNCELEYİN <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
                     </Link>
                 </div>
@@ -60,7 +58,7 @@ export const Services = () => {
                             viewport={{ once: true }}
                             transition={{ duration: 0.8, delay: index * 0.1 }}
                         >
-                            <Link href={`/hizmet/${practice.slug}`} className="block h-full group">
+                            <Link href={`/hizmetlerimiz/${practice.slug}`} className="block h-full group">
                                 <div className="bg-[#111111] p-10 rounded-xl border border-white/5 group-hover:border-gold/20 transition-all h-full">
                                     <div className="w-14 h-14 bg-gold/5 rounded flex items-center justify-center mb-10 group-hover:bg-gold/10 transition-colors">
                                         {practice.icon}

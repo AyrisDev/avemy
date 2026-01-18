@@ -6,6 +6,7 @@ import { Navbar } from "@/app/components/layout/Navbar";
 import { FloatingActions } from "@/app/components/layout/FloatingActions";
 import { Phone, Mail, MapPin, Clock, Send, Globe } from "lucide-react";
 import { Button } from "@/app/components/ui/Button";
+import Link from "next/link";
 
 export default function IletisimClient() {
     return (
@@ -77,8 +78,8 @@ export default function IletisimClient() {
                                 <div>
                                     <h3 className="text-lg font-bold mb-3 tracking-tight">E-Posta Adresimiz</h3>
                                     <p className="text-white/40 text-[15px] leading-relaxed font-light">
-                                        contact@prestigelaw.me<br />
-                                        info@prestigelaw.me
+                                        info@aveminakarabudak.com<br />
+                                        aveminakarabudak@gmail.com
                                     </p>
                                 </div>
                             </div>
@@ -98,12 +99,12 @@ export default function IletisimClient() {
                         </motion.div>
 
                         <div className="p-10 bg-gold rounded-3xl text-void">
-                            <h3 className="text-2xl font-serif font-black mb-4">Uluslararası Temsil</h3>
+                            <h3 className="text-2xl font-serif font-black mb-4">Türkiye Geneli Temsil</h3>
                             <p className="text-void/60 text-sm leading-relaxed mb-8 font-medium">
-                                İngiltere, Almanya, Birleşik Arap Emirlikleri ve ABD'deki partner ofislerimizle küresel ölçekte hizmet sunuyoruz.
+                                Marmaris merkezli ofisimizle Türkiye'nin her ilinde profesyonel hukuki danışmanlık ve dava yönetimi sunuyoruz.
                             </p>
                             <div className="flex items-center gap-2 font-black text-[10px] tracking-widest uppercase">
-                                <Globe size={16} /> GLOBAL NETWORK ACTIVE
+                                <Globe size={16} /> NATIONAL NETWORK ACTIVE
                             </div>
                         </div>
                     </div>
@@ -134,7 +135,7 @@ export default function IletisimClient() {
                                     <input
                                         type="email"
                                         className="w-full bg-void border border-white/10 rounded-xl p-5 text-white focus:outline-none focus:border-gold/30 transition-all placeholder:text-white/5"
-                                        placeholder="ali@ornekyazi.com"
+                                        placeholder="info@aveminakarabudak.com"
                                     />
                                 </div>
                                 <div className="space-y-3 md:col-span-2">
@@ -161,7 +162,7 @@ export default function IletisimClient() {
                                         <Send size={18} /> MESAJI GÖNDER
                                     </Button>
                                     <p className="mt-8 text-[9px] text-white/20 text-center font-medium leading-relaxed tracking-widest">
-                                        BU FORMU DOLDURARAK <span className="text-gold/60 underline cursor-pointer">KVKK AYDINLATMA METNİNİ</span> KABUL ETMİŞ OLURSUNUZ.
+                                        BU FORMU DOLDURARAK <Link href="/kvkk" className="text-gold/60 underline cursor-pointer hover:text-gold transition-colors">KVKK AYDINLATMA METNİNİ</Link> KABUL ETMİŞ OLURSUNUZ.
                                     </p>
                                 </div>
                             </form>

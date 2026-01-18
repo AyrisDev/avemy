@@ -1,10 +1,20 @@
 import { Navbar } from "./components/layout/Navbar";
 import { Hero } from "./components/sections/Hero";
-import { TrustStrip } from "./components/sections/TrustStrip";
+
 import { Services } from "./components/sections/Services";
 import { Testimonials } from "./components/sections/Testimonials";
 import { FloatingActions } from "./components/layout/FloatingActions";
 import { Globe, Share2 } from "lucide-react";
+import Link from "next/link";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Av. Emina KARABUDAK | EK Hukuk | Muğla Marmaris Ceza & Boşanma Avukatı",
+  description: "Av. Emina KARABUDAK yönetimindeki EK Hukuk, Muğla Marmaris'te ceza, aile, boşanma ve gayrimenkul hukuku alanlarında profesyonel hukuki danışmanlık sunar.",
+  alternates: {
+    canonical: "https://aveminakarabudak.com",
+  },
+};
 
 export default function Home() {
   return (
@@ -32,7 +42,7 @@ export default function Home() {
                 </span>
               </div>
               <p className="text-white/40 text-[13px] leading-relaxed max-w-xs">
-                Hukuki mükemmeliyette küresel bir standart, karmaşık zorluklar için kişiselleştirilmiş çözümler sunar.
+                Hukuki mükemmeliyette Türkiye genelinde güvenilir bir standart, karmaşık zorluklar için kişiselleştirilmiş çözümler sunar.
               </p>
             </div>
 
@@ -52,7 +62,7 @@ export default function Home() {
               <h4 className="text-white text-[11px] font-bold tracking-[0.3em] uppercase mb-8">YASAL</h4>
               <ul className="space-y-4 text-white/40 text-[11px] font-bold tracking-widest">
                 <li><a href="#" className="hover:text-gold transition-colors">Kullanım Koşulları</a></li>
-                <li><a href="#" className="hover:text-gold transition-colors">Gizlilik Politikası</a></li>
+                <li><Link href="/kvkk" className="hover:text-gold transition-colors">KVKK Aydınlatma Metni</Link></li>
                 <li><a href="#" className="hover:text-gold transition-colors">Yasal Uyarı</a></li>
                 <li><a href="#" className="hover:text-gold transition-colors">Çerez Politikası</a></li>
               </ul>
@@ -88,6 +98,44 @@ export default function Home() {
         </div>
       </footer>
 
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LegalService",
+            "name": "EK Hukuk & Danışmanlık",
+            "image": "https://ekhukuk.com/ek_logo.png",
+            "@id": "https://ekhukuk.com",
+            "url": "https://ekhukuk.com",
+            "telephone": "+905421458713",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Marmaris",
+              "addressLocality": "Muğla",
+              "postalCode": "48700",
+              "addressCountry": "TR"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": 36.855,
+              "longitude": 28.273
+            },
+            "openingHoursSpecification": {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday"
+              ],
+              "opens": "09:00",
+              "closes": "18:30"
+            }
+          })
+        }}
+      />
       <FloatingActions />
     </main>
   );

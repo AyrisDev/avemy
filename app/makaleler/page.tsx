@@ -4,8 +4,11 @@ import directus from "@/lib/directus";
 import { readItems } from "@directus/sdk";
 
 export const metadata: Metadata = {
-    title: "Akademik Makaleler & Hukuki Analizler | EK Hukuk",
-    description: "Hukuk dünyasındaki güncel gelişmeleri, derinlemesine analizleri ve çözüm önerilerini içeren akademik makalelerimiz.",
+    title: "Makaleler & Hukuki Analizler | EK Hukuk Akademik",
+    description: "Güncel hukuki gelişmeler, yargıtay kararları ve akademik analizlerimizi içeren makalelerimizi inceleyin.",
+    alternates: {
+        canonical: "https://ekhukuk.com/makaleler",
+    },
 };
 
 export default async function Page() {

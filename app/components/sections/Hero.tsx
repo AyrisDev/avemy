@@ -47,11 +47,16 @@ export const Hero = () => {
                     transition={{ duration: 1, delay: 0.3 }}
                     className="lg:col-span-6 flex flex-col justify-center items-start z-20 bg-transparent min-h-full"
                 >
-                    <div className="flex items-center gap-4 mb-8">
-                        <div className="w-16 h-[1px] bg-gold" />
-                        <span className="text-gold text-[10px] font-black tracking-[0.5em] uppercase">
-                            EK HUKUK & DANIŞMANLIK
-                        </span>
+                    <div className="flex items-start gap-4 mb-10">
+                        <div className="w-16 h-[1px] bg-gold mt-2" />
+                        <div className="flex flex-col gap-2">
+                            <span className="text-gold text-[10px] font-black tracking-[0.5em] uppercase">
+                                EK HUKUK & DANIŞMANLIK
+                            </span>
+                            <span className="text-white/60 text-[11px] font-serif italic tracking-widest text-right">
+                                AV. EMİNA KARABUDAK
+                            </span>
+                        </div>
                     </div>
 
                     <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-black text-white leading-[1.1] lg:leading-[0.85] mb-8 lg:mb-10 tracking-tighter">
@@ -61,8 +66,7 @@ export const Hero = () => {
                     </h1>
 
                     <p className="text-base lg:text-xl text-white/40 mb-8 lg:mb-12 max-w-xl leading-relaxed font-light">
-                        Türkiye'nin en karmaşık hukuki süreçlerinde, mutlak gizlilik ve üstün stratejik başarı ile yanınızdayız. Geleceğinizi tesadüflere değil, tecrübeye emanet edin.
-                    </p>
+                        Gizlilik, kararlılık ve başarı odaklı yaklaşımımızla tüm hukuki süreçlerinizde güvenle yanınızdayız.</p>
 
                     <div className="flex flex-col sm:flex-row gap-6 lg:gap-8 items-start sm:items-center w-full">
                         <Link href="/iletisim" className="w-full sm:w-auto">
@@ -71,7 +75,7 @@ export const Hero = () => {
                                 whileTap={{ scale: 0.98 }}
                                 className="w-full sm:w-auto px-10 lg:px-12 py-5 lg:py-6 bg-gold text-void font-black text-[10px] lg:text-[11px] tracking-[0.3em] uppercase shadow-2xl shadow-gold/20 hover:brightness-110 transition-all"
                             >
-                                ŞİMDİ RANDEVU ALIN
+                                RANDEVU TALEP ET
                             </motion.button>
                         </Link>
 

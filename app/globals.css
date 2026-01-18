@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @theme {
   --color-background: var(--background);
@@ -83,4 +84,51 @@ h6 {
 .glow-gold-hover:hover {
   box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
   transition: all 0.3s ease;
+}
+
+/* Blog & Article Typography Overrides */
+.prose {
+  --tw-prose-bullets: theme(colors.gold);
+  --tw-prose-quote-borders: theme(colors.gold);
+}
+
+.prose h2,
+.prose h3 {
+  color: #ffffff !important;
+  font-family: var(--font-playfair) !important;
+  scroll-margin-top: 100px;
+}
+
+.prose p {
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.prose ul {
+  list-style-type: none !important;
+  padding-left: 0 !important;
+}
+
+.prose ul li {
+  position: relative;
+  padding-left: 1.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 6px;
+  height: 6px;
+  background-color: #d4af37;
+  border-radius: 9999px;
+}
+
+.prose blockquote {
+  border-left-width: 4px !important;
+  background: rgba(212, 175, 55, 0.03);
+  padding: 2rem !important;
+  border-radius: 0 1rem 1rem 0;
 }

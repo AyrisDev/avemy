@@ -9,55 +9,10 @@ import { ChevronRight, Building2, Gavel, Scale, ShieldCheck, Briefcase, Landmark
 import Image from "next/image";
 import { getDirectusImage } from "@/lib/directus";
 
-interface Service {
-    id: string;
-    Slug: string;
-    Title: string;
-    Short_Description: string;
-    Icon?: string;
-}
-
-const defaultPractices = [
-    {
-        Title: "Ticaret ve Şirketler Hukuku",
-        Short_Description: "Küresel şirketler ve birleşme-devralma süreçleri için sofistike çözümler.",
-        Slug: "ticaret-ve-sirketler-hukuku",
-        iconElement: <Building2 className="text-gold" size={32} />
-    },
-    {
-        Title: "Aile ve Boşanma Hukuku",
-        Short_Description: "Karmaşık aile hukuku ve miras uyuşmazlıkları için uzman temsil.",
-        Slug: "aile-ve-bosanma-hukuku",
-        iconElement: <Scale className="text-gold" size={32} />
-    },
-    {
-        Title: "Gayrimenkul Hukuku",
-        Short_Description: "Yüksek değerli gayrimenkul projeleri ve tapu uyuşmazlıkları yönetimi.",
-        Slug: "gayrimenkul-hukuku",
-        iconElement: <Landmark className="text-gold" size={32} />
-    },
-    {
-        Title: "Ceza Hukuku",
-        Short_Description: "Beyaz yakalı suçları ve karmaşık ceza davaları için stratejik savunma.",
-        Slug: "ceza-hukuku",
-        iconElement: <Gavel className="text-gold" size={32} />
-    },
-    {
-        Title: "Varlık ve Miras Yönetimi",
-        Short_Description: "Gelecek nesillere miras bırakılacak varlıkların hukuki güven altına alınması.",
-        Slug: "varlik-ve-miras-yonetimi",
-        iconElement: <Briefcase className="text-gold" size={32} />
-    },
-    {
-        Title: "Bilişim ve Teknoloji Hukuku",
-        Short_Description: "Dijital varlıklar, veri koruma ve teknoloji girişimleri için güncel destek.",
-        Slug: "bilisim-ve-teknoloji-hukuku",
-        iconElement: <ShieldCheck className="text-gold" size={32} />
-    }
-];
+import { Service, defaultPractices } from "@/lib/constants";
 
 export default function ServicesListClient({ initialServices }: { initialServices: Service[] }) {
-    const servicesToDisplay = initialServices.length > 0 ? initialServices : [];
+    const servicesToDisplay = initialServices && initialServices.length > 0 ? initialServices : defaultPractices;
 
     return (
         <main className="relative min-h-screen bg-[#0A0A0A] text-white selection:bg-gold selection:text-void">
@@ -90,7 +45,7 @@ export default function ServicesListClient({ initialServices }: { initialService
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
                         >
-                            <Link href={`/hizmet/${service.Slug}`}>
+                            <Link href={`/hizmetlerimiz/${service.Slug}`}>
                                 <div className="bg-[#111111] border border-white/5 rounded-3xl p-10 h-full hover:border-gold/30 transition-all group relative overflow-hidden">
                                     <div className="absolute top-0 right-0 w-32 h-32 bg-gold/5 blur-3xl rounded-full -translate-y-16 translate-x-16 opacity-0 group-hover:opacity-100 transition-opacity" />
 

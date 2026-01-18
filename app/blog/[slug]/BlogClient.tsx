@@ -9,7 +9,6 @@ import Link from "next/link";
 import { Button } from "@/app/components/ui/Button";
 import directus, { getDirectusImage } from "@/lib/directus";
 import { readItems } from "@directus/sdk";
-import Image from "next/image";
 
 interface BlogPost {
     id: string;
@@ -18,7 +17,6 @@ interface BlogPost {
     content: string;
     seo_description: string;
     date_created: string;
-    featured_image: string;
     category?: {
         name: string;
     };
@@ -43,7 +41,7 @@ export default function BlogClient({ params, initialPost }: { params: { slug: st
             try {
                 const response = await directus.request(
                     readItems('posts', {
-                        fields: ['id', 'slug', 'title', 'content', 'seo_description', 'date_created', 'featured_image'],
+                        fields: ['id', 'slug', 'title', 'content', 'seo_description', 'date_created'],
                         filter: {
                             slug: { _eq: params.slug },
                             status: { _eq: 'published' }
@@ -84,6 +82,32 @@ export default function BlogClient({ params, initialPost }: { params: { slug: st
         );
     }
 
+    const [copied, setCopied] = useState(false);
+
+    const handleShare = async () => {
+        const shareData = {
+            title: post?.title,
+            text: post?.seo_description,
+            url: window.location.href,
+        };
+
+        if (navigator.share) {
+            try {
+                await navigator.share(shareData);
+            } catch (err) {
+                console.error("Error sharing:", err);
+            }
+        } else {
+            try {
+                await navigator.clipboard.writeText(window.location.href);
+                setCopied(true);
+                setTimeout(() => setCopied(false), 2000);
+            } catch (err) {
+                console.error("Error copying link:", err);
+            }
+        }
+    };
+
     return (
         <main className="relative min-h-screen bg-[#0A0A0A] text-white selection:bg-gold selection:text-void">
             {/* Progress Bar */}
@@ -112,47 +136,56 @@ export default function BlogClient({ params, initialPost }: { params: { slug: st
                             )}
                         </div>
 
-                        <h1 className="text-5xl md:text-7xl font-serif font-black text-white mb-16 leading-tight">
+                        <h1 className="text-4xl md:text-6xl font-serif font-black text-white mb-10 leading-[1.1] tracking-tight">
                             {post.title}
                         </h1>
+                        <p className="text-white/40 text-lg md:text-xl font-light leading-relaxed max-w-3xl italic">
+                            {post.seo_description}
+                        </p>
 
-                        <div className="w-full h-[500px] bg-[#111111] rounded-3xl overflow-hidden mb-20 relative border border-white/5">
-                            {post.featured_image ? (
-                                <Image
-                                    src={getDirectusImage(post.featured_image) || ""}
-                                    alt={post.title}
-                                    fill
-                                    className="object-cover"
-                                />
-                            ) : (
-                                <div className="absolute inset-0 flex items-center justify-center text-white/5 font-serif italic text-4xl uppercase tracking-widest">
-                                    Prestige Law
-                                </div>
-                            )}
-                        </div>
                     </header>
 
-                    <section className="prose-container">
+                    <section className="prose-container relative z-10">
                         <div
-                            className="prose prose-invert prose-stone max-w-none text-white/60 text-lg leading-[1.8] font-light
-                            prose-headings:font-serif prose-headings:text-white prose-headings:font-black prose-headings:mt-16 prose-headings:mb-8
-                            prose-p:mb-8
+                            className="prose prose-invert prose-stone max-w-none 
+                            text-white/70 text-lg md:text-xl leading-[1.8] font-light
+                            prose-headings:text-white prose-headings:font-serif prose-headings:font-black prose-headings:tracking-tight
                             prose-strong:text-white prose-strong:font-bold
-                            prose-blockquote:border-l-gold prose-blockquote:bg-gold/5 prose-blockquote:py-8 prose-blockquote:px-10 prose-blockquote:rounded-r-2xl prose-blockquote:italic prose-blockquote:text-white/90 prose-blockquote:font-serif prose-blockquote:text-xl"
+                            prose-p:mb-8"
                             dangerouslySetInnerHTML={{ __html: post.content }}
                         />
                     </section>
 
+                    {/* Legal Disclaimer Section */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="mt-20 p-8 md:p-10 bg-[#111111] border border-white/5 rounded-2xl relative overflow-hidden group"
+                    >
+                        <div className="absolute top-0 left-0 w-1 h-full bg-gold/20 group-hover:bg-gold transition-colors" />
+                        <div className="flex gap-6 items-start">
+                            <div className="text-white/40 leading-relaxed text-sm md:text-base font-light italic">
+                                <strong className="text-gold font-bold not-italic block mb-4 uppercase tracking-widest text-xs">Yasal Uyarı</strong>
+                                Bu içerik, yayınlandığı tarihteki mevzuat hükümlerine ve Yargıtay kararlarına dayanılarak, yalnızca genel bilgilendirme amacıyla hazırlanmıştır. Burada yer alan bilgiler, hukuki danışmanlık hizmeti yerine geçmez. Her somut olay, kendine özgü detaylar barındırır ve kanunlar zamanla değişebilir. Hak kaybı yaşamamak için hukuki sürecinizi uzman bir avukat eşliğinde yürütmenizi önemle tavsiye ederiz. Detaylı bilgi için büromuzla iletişime geçebilirsiniz.
+                            </div>
+                        </div>
+                    </motion.div>
+
                     <footer className="mt-32 pt-16 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-12">
                         <div className="flex gap-4">
-                            <Button variant="secondary" className="flex gap-3 px-10 py-5 text-[10px] tracking-[0.2em] uppercase font-bold bg-white/5 border-white/10 hover:bg-gold hover:text-void transition-all">
-                                <Share2 size={16} /> PAYLAŞ
+                            <Button
+                                onClick={handleShare}
+                                variant="secondary"
+                                className="flex gap-3 px-10 py-5 text-[10px] tracking-[0.2em] uppercase font-bold bg-white/5 border-white/10 hover:bg-gold hover:text-void transition-all min-w-[200px]"
+                            >
+                                <Share2 size={16} /> {copied ? "LİNK KOPYALANDI" : "YAZIYI PAYLAŞ"}
                             </Button>
                         </div>
                         <div className="flex items-center gap-6">
                             <div className="text-right">
                                 <div className="text-white/60 font-bold text-[10px] tracking-widest uppercase mb-1">YAZAR</div>
-                                <div className="text-white text-lg font-serif italic">{post.author_name || "Av. M. Ali Yıldız"}</div>
+                                <div className="text-white text-lg font-serif italic">{post.author_name || "Av. Emina KARABUDAK"}</div>
                             </div>
                         </div>
                     </footer>

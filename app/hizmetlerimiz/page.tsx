@@ -4,8 +4,11 @@ import directus from "@/lib/directus";
 import { readItems } from "@directus/sdk";
 
 export const metadata: Metadata = {
-    title: "Uzmanlık Alanlarımız | Profesyonel Hukuki Hizmetler | EK Hukuk",
-    description: "Ticaret hukukundan aile hukukuna, geniş bir yelpazede sunduğumuz elit hukuk çözümlerini inceleyin.",
+    title: "Hizmetlerimiz | Marmaris Hukuki Danışmanlık & Avukatlık",
+    description: "Ticaret hukuku, aile hukuku, gayrimenkul ve ceza hukuku alanlarında Marmaris merkezli profesyonel avukatlık hizmetleri.",
+    alternates: {
+        canonical: "https://ekhukuk.com/hizmetlerimiz",
+    },
 };
 
 export default async function Page() {

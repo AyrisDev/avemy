@@ -27,7 +27,7 @@ export const Navbar = () => {
 
     const menuItems = [
         { label: "HAKKIMIZDA", href: "/hakkimizda" },
-        { label: "HİZMETLER", href: "/hizmet" },
+        { label: "HİZMETLER", href: "/hizmetlerimiz" },
         { label: "BLOG", href: "/blog" },
         { label: "MAKALELER", href: "/makaleler" },
         { label: "İLETİŞİM", href: "/iletisim" },

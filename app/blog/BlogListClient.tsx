@@ -8,7 +8,6 @@ import Link from "next/link";
 import { Calendar, Clock, ArrowRight } from "lucide-react";
 import directus, { getDirectusImage } from "@/lib/directus";
 import { readItems } from "@directus/sdk";
-import Image from "next/image";
 
 interface BlogPost {
     id: string;
@@ -34,7 +33,7 @@ export default function BlogListClient({ initialPosts }: { initialPosts: BlogPos
             try {
                 const response = await directus.request(
                     readItems('posts', {
-                        fields: ['id', 'slug', 'title', 'seo_description', 'date_created', 'featured_image'],
+                        fields: ['id', 'slug', 'title', 'seo_description', 'date_created'],
                         sort: ['-date_created'],
                         filter: {
                             status: { _eq: 'published' }
@@ -89,28 +88,13 @@ export default function BlogListClient({ initialPosts }: { initialPosts: BlogPos
                             >
                                 <Link href={`/blog/${post.slug}`}>
                                     <div className="bg-[#111111] border border-white/5 rounded-2xl overflow-hidden hover:border-gold/30 transition-all group flex flex-col h-full">
-                                        {/* Image Header */}
-                                        <div className="relative aspect-video overflow-hidden">
-                                            {post.featured_image ? (
-                                                <Image
-                                                    src={getDirectusImage(post.featured_image) || ""}
-                                                    alt={post.title}
-                                                    fill
-                                                    className="object-cover group-hover:scale-105 transition-transform duration-700"
-                                                />
-                                            ) : (
-                                                <div className="w-full h-full bg-[#1A1A1A] flex items-center justify-center font-serif italic text-white/5 text-2xl uppercase tracking-widest">
-                                                    PRESTIGE
-                                                </div>
-                                            )}
-                                            <div className="absolute top-4 left-4">
-                                                <span className="px-3 py-1 bg-void/80 backdrop-blur-md text-gold text-[9px] font-bold uppercase tracking-[0.2em] rounded border border-white/5">
+
+                                        <div className="p-8 flex flex-col flex-grow">
+                                            <div className="flex items-center gap-3 mb-6">
+                                                <span className="px-3 py-1 bg-gold/10 text-gold text-[9px] font-bold uppercase tracking-[0.2em] rounded border border-gold/10">
                                                     {post.category?.name || "Hukuk"}
                                                 </span>
                                             </div>
-                                        </div>
-
-                                        <div className="p-8 flex flex-col flex-grow">
                                             <h2 className="text-2xl font-serif font-bold mb-4 group-hover:text-gold transition-colors duration-300 line-clamp-2">
                                                 {post.title}
                                             </h2>

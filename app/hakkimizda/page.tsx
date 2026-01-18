@@ -2,8 +2,11 @@ import { Metadata } from "next";
 import HakkimizdaClient from "./HakkimizdaClient";
 
 export const metadata: Metadata = {
-    title: "Hakkımızda | Prestij ve Mükemmeliyet | EK Hukuk",
-    description: "EK Hukuk & Danışmanlık'ın hikayesi, değerleri ve hukuk sektöründeki eşsiz vizyonu.",
+    title: "Kurumsal | EK Hukuk & Danışmanlık",
+    description: "EK Hukuk Marmaris'in kuruluşu, uzman avukat kadromuzun vizyonu ve şeffaf hukuk anlayışımız hakkında bilgi edinin.",
+    alternates: {
+        canonical: "https://ekhukuk.com/hakkimizda",
+    },
 };
 
 export default function Page() {

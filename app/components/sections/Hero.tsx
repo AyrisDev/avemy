@@ -4,7 +4,7 @@ import React from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "../ui/Button";
 import { Calendar } from "lucide-react";
-import Image from "next/image";
+import Link from "next/link";
 
 export const Hero = () => {
     const { scrollY } = useScroll();
@@ -19,65 +19,70 @@ export const Hero = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent z-10" />
             </div>
 
-            <div className="container mx-auto px-6 relative z-20 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className="container mx-auto px-6 relative z-20 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
                 {/* Person Image (Left) */}
                 <motion.div
-                    initial={{ opacity: 0, x: -100 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 1.2, ease: "easeOut" }}
-                    className="lg:col-span-5 relative"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 1.5, ease: "easeOut" }}
+                    className="lg:col-span-6 relative h-[70vh] lg:h-[90vh]"
                 >
-                    <div className="relative aspect-[3/4] w-full max-w-lg mx-auto overflow-hidden rounded-bl-[100px]">
-                        <Image
-                            src="/professional_lawyer_cutout_1768744824328.png"
+                    <div className="relative w-full h-full overflow-hidden">
+                        <img
+                            src="/lawyer_v3.png"
                             alt="Elite Counsel"
-                            fill
-                            className="object-cover grayscale hover:grayscale-0 transition-all duration-1000"
-                            priority
+                            className="w-full h-full object-contain object-left filter grayscale-[0.8] contrast-[1.1] brightness-[0.85] hover:grayscale-0 transition-all duration-1000 scale-[0.8] origin-left"
+                            loading="eager"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent opacity-60" />
+                        {/* Subtle Right Blend to ensure text contrast if needed */}
+                        <div className="absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-[#0A0A0A] to-transparent z-10" />
                     </div>
                 </motion.div>
 
                 {/* Text Content (Right) */}
                 <motion.div
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.4 }}
-                    className="lg:col-span-7 pl-0 lg:pl-12"
+                    initial={{ opacity: 0, x: 30 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 1, delay: 0.3 }}
+                    className="lg:col-span-6 flex flex-col justify-center items-start z-20 bg-transparent min-h-full"
                 >
                     <div className="flex items-center gap-4 mb-8">
-                        <div className="w-12 h-[1px] bg-gold" />
-                        <span className="text-gold text-[10px] font-bold tracking-[0.4em] uppercase">
-                            EST. 1992
+                        <div className="w-16 h-[1px] bg-gold" />
+                        <span className="text-gold text-[10px] font-black tracking-[0.5em] uppercase">
+                            PRESTIGE LAW INTERNATIONAL
                         </span>
                     </div>
 
-                    <h1 className="text-6xl md:text-8xl font-serif font-black text-white leading-[0.9] mb-8">
-                        Adalet <br />
-                        Kusursuzlukla <br />
-                        <span className="text-gold italic">Tanımlanır.</span>
+                    <h1 className="text-7xl md:text-7xl font-serif font-black text-white leading-[0.85] mb-10 tracking-tighter">
+                        Güçlü Temsil, <br />
+                        <span className="text-gold italic"> Sarsılmaz </span> <br />
+                        Adalet.
                     </h1>
 
-                    <p className="text-lg text-white/50 mb-12 max-w-md leading-relaxed font-light">
-                        En karmaşık hukuki meseleler için üst düzey temsil. En zorlu müvekkillerimiz için gizlilik, strateji ve eşsiz sonuçlar sunuyoruz.
+                    <p className="text-xl text-white/40 mb-12 max-w-xl leading-relaxed font-light">
+                        Türkiye'nin en karmaşık hukuki süreçlerinde, mutlak gizlilik ve üstün stratejik başarı ile yanınızdayız. Geleceğinizi tesadüflere değil, tecrübeye emanet edin.
                     </p>
 
-                    <div className="flex flex-wrap gap-6">
-                        <motion.button
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            className="px-10 py-5 bg-gold text-void font-bold text-xs tracking-widest uppercase shadow-[0_20px_40px_rgba(212,175,55,0.2)]"
-                        >
-                            HEMEN DANIŞIN
-                        </motion.button>
-                        <motion.button
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            className="px-10 py-5 border border-white/20 text-white font-bold text-xs tracking-widest uppercase hover:bg-white/5 transition-colors"
-                        >
-                            VİZYONUMUZ
-                        </motion.button>
+                    <div className="flex flex-wrap gap-8 items-center">
+                        <Link href="/iletisim">
+                            <motion.button
+                                whileHover={{ scale: 1.02, y: -2 }}
+                                whileTap={{ scale: 0.98 }}
+                                className="px-12 py-6 bg-gold text-void font-black text-[11px] tracking-[0.3em] uppercase shadow-2xl shadow-gold/20 hover:brightness-110 transition-all"
+                            >
+                                ŞİMDİ RANDEVU ALIN
+                            </motion.button>
+                        </Link>
+
+                        <div className="flex flex-col">
+                            <span className="text-white/20 text-[9px] font-black tracking-widest uppercase mb-1">KIŞISEL DANIŞMANLIK</span>
+                            <span className="text-white font-serif italic text-lg">+90 (212) 555 00 00</span>
+                        </div>
+                    </div>
+
+                    {/* Branding Decorative Text */}
+                    <div className="mt-20 opacity-5 select-none pointer-events-none">
+                        <span className="text-[120px] font-serif font-black text-white leading-none">PRESTIGE</span>
                     </div>
                 </motion.div>
             </div>

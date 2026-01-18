@@ -8,7 +8,7 @@ export const FloatingActions = () => {
     return (
         <div className="fixed bottom-8 right-8 z-50 flex flex-col gap-4">
             <motion.a
-                href="https://wa.me/905000000000"
+                href="https://wa.me/905421458713"
                 target="_blank"
                 whileHover={{ scale: 1.1, x: -5 }}
                 whileTap={{ scale: 0.9 }}
@@ -18,7 +18,7 @@ export const FloatingActions = () => {
             </motion.a>
 
             <motion.a
-                href="tel:+905000000000"
+                href="tel:+905421458713"
                 whileHover={{ scale: 1.1, x: -5 }}
                 whileTap={{ scale: 0.9 }}
                 className="w-14 h-14 bg-gold text-void rounded-full flex items-center justify-center shadow-lg hover:shadow-gold/40 transition-shadow"

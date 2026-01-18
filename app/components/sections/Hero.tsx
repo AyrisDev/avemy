@@ -77,7 +77,9 @@ export const Hero = () => {
 
                         <div className="flex flex-col">
                             <span className="text-white/20 text-[8px] lg:text-[9px] font-black tracking-widest uppercase mb-1">KIŞISEL DANIŞMANLIK</span>
-                            <span className="text-white font-serif italic text-lg">+90 (212) 555 00 00</span>
+                            <a href="tel:+905421458713" className="text-white font-serif italic text-lg hover:text-gold transition-colors">
+                                +90 (542) 145 87 13
+                            </a>
                         </div>
                     </div>
 

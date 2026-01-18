@@ -45,13 +45,13 @@ export const Navbar = () => {
                 <div className="max-w-7xl mx-auto w-full flex items-center justify-between">
                     {/* Logo Section */}
                     <div className="flex-1 flex items-center">
-                        <Link href="/" className="flex items-center gap-4 group">
-                            <div className="w-9 h-9 bg-gold rounded-sm flex items-center justify-center transform rotate-45 group-hover:rotate-[225deg] transition-transform duration-700">
-                                <div className="w-5 h-5 bg-void rounded-sm -rotate-45 flex items-center justify-center">
-                                    <div className="w-2 h-2 bg-gold rounded-full" />
-                                </div>
-                            </div>
-                            <span className="text-xl font-serif font-black tracking-tighter text-white uppercase flex items-center">
+                        <Link href="/" className="flex items-center gap-2 group">
+                            <img
+                                src="/ek_logo.png"
+                                alt="EK Hukuk Logo"
+                                className="h-24 w-auto object-contain transition-transform duration-500 group-hover:scale-110"
+                            />
+                            <span className="text-xl font-serif font-black tracking-tighter text-white uppercase flex items-center translate-y-1">
                                 EK&nbsp;<span className="font-bold text-gold">HUKUK</span>
                             </span>
                         </Link>

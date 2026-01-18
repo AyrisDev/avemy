@@ -52,8 +52,8 @@ export default function IletisimClient() {
                                 <div>
                                     <h3 className="text-lg font-bold mb-3 tracking-tight">Merkez Ofisimiz</h3>
                                     <p className="text-white/40 text-[15px] leading-relaxed font-light">
-                                        Zorlu Center, Levazım Mah. Koru Sokak<br />
-                                        No:2 K:18 Beşiktaş, İstanbul / Türkiye
+                                        Marmaris / Muğla<br />
+                                        Türkiye
                                     </p>
                                 </div>
                             </div>
@@ -65,8 +65,7 @@ export default function IletisimClient() {
                                 <div>
                                     <h3 className="text-lg font-bold mb-3 tracking-tight">Telefon ve WhatsApp</h3>
                                     <p className="text-white/40 text-[15px] leading-relaxed font-light">
-                                        +90 (212) 555 00 00<br />
-                                        +90 (532) 555 00 00
+                                        <a href="tel:+905421458713" className="hover:text-gold transition-colors">+90 (542) 145 87 13</a>
                                     </p>
                                 </div>
                             </div>

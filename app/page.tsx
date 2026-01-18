@@ -22,9 +22,11 @@ export default function Home() {
             {/* Logo Column */}
             <div className="space-y-8">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-white/10 rounded flex items-center justify-center transform rotate-45">
-                  <div className="w-4 h-4 text-white -rotate-45 font-bold flex items-center justify-center">P</div>
-                </div>
+                <img
+                  src="/ek_logo.png"
+                  alt="EK Hukuk Logo"
+                  className="h-16 w-auto object-contain"
+                />
                 <span className="text-xl font-serif font-black tracking-tighter text-white">
                   EK<span className="text-gold">HUKUK</span>
                 </span>
@@ -60,8 +62,12 @@ export default function Home() {
             <div>
               <h4 className="text-white text-[11px] font-bold tracking-[0.3em] uppercase mb-8">OFİS</h4>
               <ul className="space-y-4 text-white/40 text-[11px] leading-relaxed">
-                <li>1000 Madison Avenue<br />New York, NY 10021</li>
-                <li>+1 (800) 555-0199</li>
+                <li>Marmaris<br />Muğla, Türkiye</li>
+                <li>
+                  <a href="tel:+905421458713" className="hover:text-gold transition-colors">
+                    +90 (542) 145 87 13
+                  </a>
+                </li>
               </ul>
               <div className="flex gap-4 mt-8">
                 <button className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-gold hover:border-gold transition-all">
@@ -76,11 +82,7 @@ export default function Home() {
 
           <div className="pt-12 border-t border-white/5 flex flex-col md:row items-center justify-between gap-6">
             <div className="text-white/20 text-[9px] font-bold tracking-[0.2em] uppercase">
-              © 2024 EK HUKUK. TÜM HAKLARI SAKLIDIR.
-            </div>
-            <div className="flex gap-8 text-white/20 text-[9px] font-bold tracking-[0.2em] uppercase">
-              <a href="#" className="hover:text-white transition-colors">MÜVEKKİL PANELİ</a>
-              <a href="#" className="hover:text-white transition-colors">PERSONEL GİRİŞİ</a>
+              © 2026 EK HUKUK. TÜM HAKLARI SAKLIDIR.
             </div>
           </div>
         </div>

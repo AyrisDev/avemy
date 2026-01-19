@@ -89,7 +89,7 @@ export const Hero = () => {
 
                     {/* Branding Decorative Text */}
                     <div className="mt-16 lg:mt-20 opacity-5 select-none pointer-events-none hidden md:block">
-                        <span className="text-[120px] font-serif font-black text-white leading-none uppercase">EK HUKUK</span>
+                        <span className="text-[100px] font-serif font-black text-white leading-none uppercase">EK HUKUK</span>
                     </div>
                 </motion.div>
             </div>

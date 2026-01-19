@@ -18,6 +18,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://aveminakarabudak.com"),
   title: {
     default: "Av. Emina KARABUDAK | EK Hukuk & Danışmanlık | Muğla Marmaris Avukat",
     template: "%s | Av. Emina KARABUDAK | EK Hukuk"
@@ -35,7 +36,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "tr_TR",
-    url: "https://ekhukuk.com",
+    url: "https://aveminakarabudak.com",
     siteName: "EK Hukuk & Danışmanlık",
     title: "Av. Emina KARABUDAK | EK Hukuk & Danışmanlık | Marmaris Muğla Avukat",
     description: "Muğla Marmaris'te Av. Emina KARABUDAK eşliğinde profesyonel hukuki çözümler. Ceza, Aile ve Gayrimenkul hukuku uzmanlığı.",

@@ -17,15 +17,14 @@ interface BlogPost {
     title: string;
     seo_description: string;
     date_created: string;
-    category?: {
-        name: string;
-    };
+    category?: string;
     reading_time?: string;
 }
 
 export default function BlogListClient({ initialPosts }: { initialPosts: BlogPost[] }) {
     const [posts, setPosts] = useState<BlogPost[]>(initialPosts || []);
     const [loading, setLoading] = useState(!initialPosts);
+
 
     useEffect(() => {
         if (initialPosts) return;
@@ -34,7 +33,7 @@ export default function BlogListClient({ initialPosts }: { initialPosts: BlogPos
             try {
                 const response = await directus.request(
                     readItems('posts', {
-                        fields: ['id', 'slug', 'title', 'seo_description', 'date_created'],
+                        fields: ['id', 'slug', 'title', 'seo_description', 'date_created', 'category', 'reading_time'],
                         sort: ['-date_created'],
                         filter: {
                             status: { _eq: 'published' }
@@ -93,7 +92,7 @@ export default function BlogListClient({ initialPosts }: { initialPosts: BlogPos
                                         <div className="p-8 flex flex-col flex-grow">
                                             <div className="flex items-center gap-3 mb-6">
                                                 <span className="px-3 py-1 bg-gold/10 text-gold text-[9px] font-bold uppercase tracking-[0.2em] rounded border border-gold/10">
-                                                    {post.category?.name || "Hukuk"}
+                                                    {post.category || "Hukuk"}
                                                 </span>
                                             </div>
                                             <h2 className="text-2xl font-serif font-bold mb-4 group-hover:text-gold transition-colors duration-300 line-clamp-2">

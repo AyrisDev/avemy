@@ -52,7 +52,7 @@ export const Navbar = () => {
                                 className="h-24 w-auto object-contain transition-transform duration-500 group-hover:scale-110"
                             />
                             <span className="text-xl font-serif font-black tracking-tighter text-white uppercase flex items-center translate-y-1">
-                                EK&nbsp;<span className="font-bold text-gold">HUKUK</span>
+                                EK<span className=" text-gold">HUKUK</span>
                             </span>
                         </Link>
                     </div>

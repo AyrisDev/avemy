@@ -17,7 +17,7 @@ export default async function Page() {
         // Fetching from 'posts' but we can filter by a category if needed. 
         // For now, fetching all and we'll label them as articles.
         articles = await directus.request(
-            readItems('posts', {
+            readItems('makale', {
                 fields: ['id', 'slug', 'title', 'seo_description', 'date_created', 'category'],
                 sort: ['-date_created'],
                 filter: {

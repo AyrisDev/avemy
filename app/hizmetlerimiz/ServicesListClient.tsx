@@ -19,21 +19,7 @@ export default function ServicesListClient({ initialServices }: { initialService
             <Navbar />
 
             <section className="pt-48 pb-32 container mx-auto px-6">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="text-center mb-32"
-                >
-                    <div className="text-gold text-[10px] font-bold tracking-[0.4em] uppercase mb-6">
-                        YETKİNLİK ALANLARIMIZ
-                    </div>
-                    <h1 className="text-6xl md:text-8xl font-serif font-black text-white mb-8">
-                        Hukuki <span className="text-gold">Mükemmeliyet</span>
-                    </h1>
-                    <p className="text-white/40 text-lg max-w-2xl mx-auto font-light leading-relaxed">
-                        Karmaşık hukuki zorlukları, vizyoner bir bakış açısı ve mutlak bir gizlilikle çözüme kavuşturuyoruz.
-                    </p>
-                </motion.div>
+
 
                 {/* dynamic list if exists, otherwise fallback to premium grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

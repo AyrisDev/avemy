@@ -46,9 +46,7 @@ export default function MakalelerListClient({ initialArticles }: { initialArticl
                     <h1 className="text-6xl md:text-9xl font-serif font-black text-white leading-tight mb-12">
                         Makaleler
                     </h1>
-                    <p className="text-white/40 text-lg max-w-3xl mx-auto font-light leading-relaxed">
-                        Karmaşık hukuk uyuşmazlıklarına dair derinlemesine analizlerimiz ve çözüm odaklı görüşlerimizle sektöre yön veriyoruz.
-                    </p>
+
                 </motion.div>
 
                 {/* Articles List - Full Width Row Style */}
@@ -61,12 +59,12 @@ export default function MakalelerListClient({ initialArticles }: { initialArticl
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
                         >
-                            <Link href={`/blog/${article.slug}`} className="group block">
+                            <Link href={`/makaleler/${article.slug}`} className="group block">
                                 <div className="grid grid-cols-1 md:grid-cols-12 gap-12 p-10 bg-[#111111]/50 backdrop-blur-sm border border-white/5 rounded-3xl hover:border-gold/20 transition-all duration-500">
                                     {/* Date/Info Column */}
                                     <div className="md:col-span-2 flex flex-col justify-center items-start md:items-center text-center space-y-4 border-b md:border-b-0 md:border-r border-white/5 pb-8 md:pb-0">
                                         <div className="text-gold font-serif text-3xl font-black italic">
-                                            {index + 1 < 10 ? `0${index + 1}` : index + 1}
+                                            {new Date(article.date_created).getDate() < 10 ? `0${new Date(article.date_created).getDate()}` : new Date(article.date_created).getDate()}
                                         </div>
                                         <div className="text-[9px] text-white/30 font-bold tracking-widest uppercase">
                                             {new Date(article.date_created).toLocaleDateString("tr-TR", { month: 'long', year: 'numeric' })}

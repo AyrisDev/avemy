@@ -9,10 +9,9 @@ import Link from "next/link";
 import { Button } from "@/app/components/ui/Button";
 import directus from "@/lib/directus";
 import { readItems } from "@directus/sdk";
-
 import { Footer } from "@/app/components/layout/Footer";
 
-interface BlogPost {
+interface Makale {
     id: string;
     slug: string;
     title: string;
@@ -24,9 +23,8 @@ interface BlogPost {
     author_name?: string;
 }
 
-export default function BlogClient({ params, initialPost }: { params: { slug: string }, initialPost: BlogPost | null }) {
-    const [post, setPost] = useState<BlogPost | null>(initialPost);
-
+export default function MakaleDetailClient({ params, initialPost }: { params: { slug: string }, initialPost: Makale | null }) {
+    const [post, setPost] = useState<Makale | null>(initialPost);
     const [loading, setLoading] = useState(!initialPost);
     const { scrollYProgress } = useScroll();
     const scaleX = useSpring(scrollYProgress, {
@@ -41,7 +39,7 @@ export default function BlogClient({ params, initialPost }: { params: { slug: st
         async function fetchPost() {
             try {
                 const response = await directus.request(
-                    readItems('posts', {
+                    readItems('makale', {
                         fields: ['id', 'slug', 'title', 'content', 'seo_description', 'date_created', 'category'],
                         filter: {
                             slug: { _eq: params.slug },
@@ -52,10 +50,10 @@ export default function BlogClient({ params, initialPost }: { params: { slug: st
                 );
 
                 if (response && response.length > 0) {
-                    setPost(response[0] as unknown as BlogPost);
+                    setPost(response[0] as unknown as Makale);
                 }
             } catch (error) {
-                console.error("Error fetching post details:", error);
+                console.error("Error fetching article details:", error);
             } finally {
                 setLoading(false);
             }
@@ -75,9 +73,9 @@ export default function BlogClient({ params, initialPost }: { params: { slug: st
     if (!post) {
         return (
             <main className="min-h-screen bg-[#0A0A0A] flex flex-col items-center justify-center text-white px-6">
-                <h1 className="text-4xl font-serif font-bold mb-6">Yazı Bulunamadı</h1>
-                <Link href="/blog" className="text-gold flex items-center gap-2 uppercase tracking-widest font-bold text-sm">
-                    <ArrowLeft size={16} /> Bloga Dön
+                <h1 className="text-4xl font-serif font-bold mb-6">Makale Bulunamadı</h1>
+                <Link href="/makaleler" className="text-gold flex items-center gap-2 uppercase tracking-widest font-bold text-sm">
+                    <ArrowLeft size={16} /> Makalelere Dön
                 </Link>
             </main>
         );
@@ -107,7 +105,6 @@ export default function BlogClient({ params, initialPost }: { params: { slug: st
                 console.error("Error copying link:", err);
             }
         } else {
-            // Fallback for browsers without clipboard API or non-secure contexts
             try {
                 const textArea = document.createElement("textarea");
                 textArea.value = window.location.href;
@@ -131,7 +128,6 @@ export default function BlogClient({ params, initialPost }: { params: { slug: st
 
     return (
         <main className="relative min-h-screen bg-[#0A0A0A] text-white selection:bg-gold selection:text-void">
-            {/* Progress Bar */}
             <motion.div
                 className="fixed top-0 left-0 right-0 h-1 bg-gold z-[70] origin-left"
                 style={{ scaleX }}
@@ -144,13 +140,13 @@ export default function BlogClient({ params, initialPost }: { params: { slug: st
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                 >
-                    <Link href="/blog" className="inline-flex items-center gap-3 text-white/30 hover:text-white transition-colors mb-16 text-[10px] font-bold uppercase tracking-[0.3em]">
-                        <ArrowLeft size={16} className="text-gold" /> TÜM YAZILAR
+                    <Link href="/makaleler" className="inline-flex items-center gap-3 text-white/30 hover:text-white transition-colors mb-16 text-[10px] font-bold uppercase tracking-[0.3em]">
+                        <ArrowLeft size={16} className="text-gold" /> TÜM MAKALELER
                     </Link>
 
                     <header className="mb-20">
                         <div className="flex flex-wrap items-center gap-8 mb-10 text-white/40 text-[10px] font-bold uppercase tracking-[0.4em]">
-                            <span className="text-gold">{post.category || "HUKUK"}</span>
+                            <span className="text-gold">{post.category || "HUKUK ANALİZİ"}</span>
                             <span className="flex items-center gap-2"><Calendar size={14} className="text-gold/40" /> {new Date(post.date_created).toLocaleDateString('tr-TR')}</span>
                             {post.reading_time && (
                                 <span className="flex items-center gap-2"><Clock size={14} className="text-gold/40" /> {post.reading_time}</span>
@@ -160,8 +156,6 @@ export default function BlogClient({ params, initialPost }: { params: { slug: st
                         <h1 className="text-4xl md:text-6xl font-serif font-black text-white mb-10 leading-[1.1] tracking-tight">
                             {post.title}
                         </h1>
-
-
                     </header>
 
                     <section className="prose-container relative z-10">
@@ -175,7 +169,6 @@ export default function BlogClient({ params, initialPost }: { params: { slug: st
                         />
                     </section>
 
-                    {/* Legal Disclaimer Section */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -186,7 +179,7 @@ export default function BlogClient({ params, initialPost }: { params: { slug: st
                         <div className="flex gap-6 items-start">
                             <div className="text-white/40 leading-relaxed text-sm md:text-base font-light italic">
                                 <strong className="text-gold font-bold not-italic block mb-4 uppercase tracking-widest text-xs">Yasal Uyarı</strong>
-                                Bu içerik, yayınlandığı tarihteki mevzuat hükümlerine ve Yargıtay kararlarına dayanılarak, yalnızca genel bilgilendirme amacıyla hazırlanmıştır. Burada yer alan bilgiler, hukuki danışmanlık hizmeti yerine geçmez. Her somut olay, kendine özgü detaylar barındırır ve kanunlar zamanla değişebilir. Hak kaybı yaşamamak için hukuki sürecinizi uzman bir avukat eşliğinde yürütmenizi önemle tavsiye ederiz. Detaylı bilgi için büromuzla iletişime geçebilirsiniz.
+                                Bu makale, yalnızca genel bilgilendirme amacıyla hazırlanmıştır ve hukuki danışmanlık hizmeti yerine geçmez. Kanunların zamanla değişebileceği ve her somut olayın kendine özgü detaylar barındırdığı unutulmamalıdır. Hak kaybı yaşamamak için hukuki sürecinizi uzman bir avukat eşliğinde yürütmenizi önemle tavsiye ederiz.
                             </div>
                         </div>
                     </motion.div>
@@ -198,7 +191,7 @@ export default function BlogClient({ params, initialPost }: { params: { slug: st
                                 variant="secondary"
                                 className="flex gap-3 px-10 py-5 text-[10px] tracking-[0.2em] uppercase font-bold bg-white/5 border-white/10 hover:bg-gold hover:text-void transition-all min-w-[200px]"
                             >
-                                <Share2 size={16} /> {copied ? "LİNK KOPYALANDI" : "YAZIYI PAYLAŞ"}
+                                <Share2 size={16} /> {copied ? "LİNK KOPYALANDI" : "MAKALEYİ PAYLAŞ"}
                             </Button>
                         </div>
                         <div className="flex items-center gap-6">

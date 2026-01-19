@@ -11,6 +11,37 @@ import Link from "next/link";
 import { Footer } from "@/app/components/layout/Footer";
 
 export default function IletisimClient() {
+    const [status, setStatus] = React.useState<"idle" | "loading" | "success" | "error">("idle");
+    const [formData, setFormData] = React.useState({
+        name: "",
+        email: "",
+        subject: "Ceza Hukuku",
+        message: ""
+    });
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setStatus("loading");
+
+        // Simulate API call
+        try {
+            await new Promise(resolve => setTimeout(resolve, 1500));
+            console.log("Form Submitted:", formData);
+            setStatus("success");
+            setFormData({ name: "", email: "", subject: "Ceza Hukuku", message: "" });
+
+            // Revert to idle after 5 seconds
+            setTimeout(() => setStatus("idle"), 5000);
+        } catch (error) {
+            setStatus("error");
+        }
+    };
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
+    };
+
     return (
         <main className="relative min-h-screen bg-[#0A0A0A] text-white selection:bg-gold selection:text-void overflow-hidden">
             <Navbar />
@@ -117,18 +148,26 @@ export default function IletisimClient() {
 
                             <h2 className="text-3xl font-serif font-black text-white mb-12">Hemen İletişime Geçin</h2>
 
-                            <form className="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
+                            <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
                                 <div className="space-y-3">
                                     <label className="block text-[10px] text-white/30 uppercase font-black tracking-widest">AD SOYAD</label>
                                     <input
+                                        required
+                                        name="name"
+                                        value={formData.name}
+                                        onChange={handleChange}
                                         type="text"
                                         className="w-full bg-void border border-white/10 rounded-xl p-5 text-white focus:outline-none focus:border-gold/30 transition-all placeholder:text-white/5"
-                                        placeholder="Ali Yılmaz"
+                                        placeholder="Ahmet Batur"
                                     />
                                 </div>
                                 <div className="space-y-3">
                                     <label className="block text-[10px] text-white/30 uppercase font-black tracking-widest">E-POSTA</label>
                                     <input
+                                        required
+                                        name="email"
+                                        value={formData.email}
+                                        onChange={handleChange}
                                         type="email"
                                         className="w-full bg-void border border-white/10 rounded-xl p-5 text-white focus:outline-none focus:border-gold/30 transition-all placeholder:text-white/5"
                                         placeholder="info@aveminakarabudak.com"
@@ -136,7 +175,12 @@ export default function IletisimClient() {
                                 </div>
                                 <div className="space-y-3 md:col-span-2">
                                     <label className="block text-[10px] text-white/30 uppercase font-black tracking-widest">YARDIM İSTEDİĞİNİZ KONU</label>
-                                    <select className="w-full bg-void border border-white/10 rounded-xl p-5 text-white focus:outline-none focus:border-gold/30 transition-all appearance-none cursor-pointer">
+                                    <select
+                                        name="subject"
+                                        value={formData.subject}
+                                        onChange={handleChange}
+                                        className="w-full bg-void border border-white/10 rounded-xl p-5 text-white focus:outline-none focus:border-gold/30 transition-all appearance-none cursor-pointer"
+                                    >
                                         <option>Ceza Hukuku</option>
                                         <option>Aile ve Boşanma Hukuku</option>
                                         <option>Gayrimenkul ve Kira Hukuku</option>
@@ -148,15 +192,49 @@ export default function IletisimClient() {
                                 <div className="space-y-3 md:col-span-2">
                                     <label className="block text-[10px] text-white/30 uppercase font-black tracking-widest">MESAJINIZ</label>
                                     <textarea
+                                        required
+                                        name="message"
+                                        value={formData.message}
+                                        onChange={handleChange}
                                         rows={4}
                                         className="w-full bg-void border border-white/10 rounded-xl p-5 text-white focus:outline-none focus:border-gold/30 transition-all placeholder:text-white/5 resize-none"
                                         placeholder="Konu hakkında kısa bir ön bilgi veriniz..."
                                     />
                                 </div>
                                 <div className="md:col-span-2 pt-6">
-                                    <Button variant="gold" className="w-full py-6 rounded-xl flex gap-3 items-center justify-center font-black text-xs tracking-[0.3em] uppercase hover:scale-[1.02] transition-transform shadow-2xl shadow-gold/10">
-                                        <Send size={18} /> MESAJI GÖNDER
+                                    <Button
+                                        variant="gold"
+                                        type="submit"
+                                        disabled={status === "loading"}
+                                        className="w-full py-6 rounded-xl flex gap-3 items-center justify-center font-black text-xs tracking-[0.3em] uppercase hover:scale-[1.02] transition-transform shadow-2xl shadow-gold/10 disabled:opacity-50 disabled:hover:scale-100"
+                                    >
+                                        {status === "loading" ? (
+                                            <div className="w-5 h-5 border-2 border-void/20 border-t-void rounded-full animate-spin" />
+                                        ) : (
+                                            <><Send size={18} /> MESAJI GÖNDER</>
+                                        )}
                                     </Button>
+
+                                    {status === "success" && (
+                                        <motion.div
+                                            initial={{ opacity: 0, y: 10 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            className="mt-6 p-4 bg-green-500/10 border border-green-500/20 text-green-500 text-center rounded-xl text-xs font-bold tracking-widest uppercase"
+                                        >
+                                            Mesajınız başarıyla iletildi. En kısa sürede dönüş sağlayacağız.
+                                        </motion.div>
+                                    )}
+
+                                    {status === "error" && (
+                                        <motion.div
+                                            initial={{ opacity: 0, y: 10 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            className="mt-6 p-4 bg-red-500/10 border border-red-500/20 text-red-500 text-center rounded-xl text-xs font-bold tracking-widest uppercase"
+                                        >
+                                            Bir hata oluştu. Lütfen tekrar deneyiniz.
+                                        </motion.div>
+                                    )}
+
                                     <p className="mt-8 text-[9px] text-white/20 text-center font-medium leading-relaxed tracking-widest">
                                         BU FORMU DOLDURARAK <Link href="/kvkk" className="text-gold/60 underline cursor-pointer hover:text-gold transition-colors">KVKK AYDINLATMA METNİNİ</Link> KABUL ETMİŞ OLURSUNUZ.
                                     </p>

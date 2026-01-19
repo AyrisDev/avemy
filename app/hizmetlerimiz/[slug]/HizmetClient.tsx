@@ -210,7 +210,7 @@ export default function HizmetDetay({ params, initialService }: { params: { slug
                                                 transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                                                 className="overflow-hidden"
                                             >
-                                                <div className="p-10 pt-0 text-white/40 text-lg leading-relaxed font-light border-t border-white/5">
+                                                <div className="p-10 pt-4 text-white/40 text-lg leading-relaxed font-light border-t border-white/5">
                                                     {faq.answer || faq.a}
                                                 </div>
                                             </motion.div>
@@ -244,7 +244,7 @@ export default function HizmetDetay({ params, initialService }: { params: { slug
                                         <input
                                             type="text"
                                             className="w-full bg-void/50 border border-white/10 rounded-2xl p-6 text-white focus:outline-none focus:border-gold/40 transition-all placeholder:text-white/5 backdrop-blur-sm"
-                                            placeholder="John Doe"
+                                            placeholder="Ahmet Batur"
                                         />
                                     </div>
                                     <div className="space-y-4">
@@ -290,29 +290,7 @@ export default function HizmetDetay({ params, initialService }: { params: { slug
                 </aside>
             </div>
 
-            {/* Bottom Call to Action */}
-            <section className="py-32 container mx-auto px-6 border-t border-white/5">
-                <div className="bg-[#111111] p-16 md:p-32 rounded-[60px] text-center relative overflow-hidden">
-                    <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none"
-                        style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 86c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm66 3c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm-46-43c5.523 0 10-4.477 10-10s-4.477-10-10-10-10 4.477-10 10 4.477 10 10 10zm0-20c4.418 0 8 3.582 8 8s-3.582 8-8 8-8-3.582-8-8 3.582-8 8-8zM31 11c5.523 0 10-4.477 10-10S36.523-9 31-9s-10 4.477-10 10 4.477 10 10 10zm0-20c4.418 0 8 3.582 8 8s-3.582 8-8 8-8-3.582-8-8 3.582-8 8-8z' fill='%23C5A059' fill-opacity='1' fill-rule='evenodd'/%3E%3C/svg%3E")` }}
-                    />
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        className="relative z-10"
-                    >
-                        <h2 className="text-4xl md:text-7xl font-serif font-black mb-12 leading-tight">
-                            Hukuki Güvenliğinizi <br /> <span className="text-gold italic">Zirveye Taşıyın.</span>
-                        </h2>
-                        <Link href="/iletisim">
-                            <Button variant="gold" className="px-16 py-8 rounded-full font-black text-xs tracking-[0.5em] uppercase hover:gap-8 transition-all flex items-center gap-4 mx-auto">
-                                ŞİMDİ BAŞLAYIN <ArrowRight size={16} />
-                            </Button>
-                        </Link>
-                    </motion.div>
-                </div>
-            </section>
+
 
             <Footer />
             <FloatingActions />

@@ -10,10 +10,11 @@ export const metadata: Metadata = {
 
 export default async function Page() {
     let posts: any[] = [];
+
     try {
         posts = await directus.request(
             readItems('posts', {
-                fields: ['id', 'slug', 'title', 'seo_description', 'date_created'],
+                fields: ['id', 'slug', 'title', 'seo_description', 'date_created', 'category'],
                 sort: ['-date_created'],
                 filter: {
                     status: { _eq: 'published' }

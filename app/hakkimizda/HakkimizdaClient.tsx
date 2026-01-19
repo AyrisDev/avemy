@@ -101,7 +101,7 @@ export default function HakkimizdaClient() {
                         initial={{ opacity: 0, x: 50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        className="relative aspect-[4/5] rounded-3xl overflow-hidden border border-white/10 group ml-auto w-full max-w-[320px] lg:max-w-[600px]"
+                        className="relative aspect-[4/5] rounded-3xl overflow-hidden border border-white/10 group ml-auto w-full max-w-[320px] lg:max-w-[500px]"
                     >
                         <Image
                             src="/emina_karabudak.jpg"

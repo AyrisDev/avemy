@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next'
 import { defaultPractices } from '@/lib/constants'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = 'https://ekhukuk.com'
+    const baseUrl = 'https://aveminakarabudak.com'
 
     // Main pages
     const routes = [

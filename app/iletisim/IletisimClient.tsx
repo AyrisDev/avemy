@@ -15,6 +15,7 @@ export default function IletisimClient() {
     const [formData, setFormData] = React.useState({
         name: "",
         email: "",
+        phone: "",
         subject: "Ceza Hukuku",
         message: ""
     });
@@ -23,16 +24,21 @@ export default function IletisimClient() {
         e.preventDefault();
         setStatus("loading");
 
-        // Simulate API call
         try {
-            await new Promise(resolve => setTimeout(resolve, 1500));
-            console.log("Form Submitted:", formData);
-            setStatus("success");
-            setFormData({ name: "", email: "", subject: "Ceza Hukuku", message: "" });
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            });
 
-            // Revert to idle after 5 seconds
+            if (!response.ok) throw new Error('Mesaj gönderilemedi');
+
+            setStatus("success");
+            setFormData({ name: "", email: "", phone: "", subject: "Ceza Hukuku", message: "" });
+
             setTimeout(() => setStatus("idle"), 5000);
         } catch (error) {
+            console.error("Form Error:", error);
             setStatus("error");
         }
     };
@@ -171,6 +177,18 @@ export default function IletisimClient() {
                                         type="email"
                                         className="w-full bg-void border border-white/10 rounded-xl p-5 text-white focus:outline-none focus:border-gold/30 transition-all placeholder:text-white/5"
                                         placeholder="info@aveminakarabudak.com"
+                                    />
+                                </div>
+                                <div className="space-y-3 md:col-span-2">
+                                    <label className="block text-[10px] text-white/30 uppercase font-black tracking-widest">TELEFON</label>
+                                    <input
+                                        required
+                                        name="phone"
+                                        value={formData.phone}
+                                        onChange={handleChange}
+                                        type="tel"
+                                        className="w-full bg-void border border-white/10 rounded-xl p-5 text-white focus:outline-none focus:border-gold/30 transition-all placeholder:text-white/5"
+                                        placeholder="+90 5xx xxx xx xx"
                                     />
                                 </div>
                                 <div className="space-y-3 md:col-span-2">

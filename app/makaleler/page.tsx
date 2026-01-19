@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     title: "Makaleler & Hukuki Analizler | EK Hukuk Akademik",
     description: "Güncel hukuki gelişmeler, yargıtay kararları ve akademik analizlerimizi içeren makalelerimizi inceleyin.",
     alternates: {
-        canonical: "https://ekhukuk.com/makaleler",
+        canonical: "https://aveminakarabudak.com/makaleler",
     },
 };
 

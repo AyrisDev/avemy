@@ -33,9 +33,9 @@ export default function Home() {
             "@context": "https://schema.org",
             "@type": "LegalService",
             "name": "EK Hukuk & Danışmanlık",
-            "image": "https://ekhukuk.com/ek_logo.png",
-            "@id": "https://ekhukuk.com",
-            "url": "https://ekhukuk.com",
+            "image": "https://aveminakarabudak.com/ek_logo.png",
+            "@id": "https://aveminakarabudak.com",
+            "url": "https://aveminakarabudak.com",
             "telephone": "+905421458713",
             "address": {
               "@type": "PostalAddress",

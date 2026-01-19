@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
             allow: '/',
             disallow: ['/admin/', '/private/'],
         },
-        sitemap: 'https://ekhukuk.com/sitemap.xml',
+        sitemap: 'https://aveminakarabudak.com/sitemap.xml',
     }
 }

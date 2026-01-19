@@ -28,12 +28,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
             title,
             description,
             alternates: {
-                canonical: `https://ekhukuk.com/hizmetlerimiz/${slug}`,
+                canonical: `https://aveminakarabudak.com/hizmetlerimiz/${slug}`,
             },
             openGraph: {
                 title,
                 description,
-                url: `https://ekhukuk.com/hizmetlerimiz/${slug}`,
+                url: `https://aveminakarabudak.com/hizmetlerimiz/${slug}`,
             }
         };
     } catch (error) {

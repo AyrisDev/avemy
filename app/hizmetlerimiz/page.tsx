@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     title: "Hizmetlerimiz | Marmaris Hukuki Danışmanlık & Avukatlık",
     description: "Ticaret hukuku, aile hukuku, gayrimenkul ve ceza hukuku alanlarında Marmaris merkezli profesyonel avukatlık hizmetleri.",
     alternates: {
-        canonical: "https://ekhukuk.com/hizmetlerimiz",
+        canonical: "https://aveminakarabudak.com/hizmetlerimiz",
     },
 };
 

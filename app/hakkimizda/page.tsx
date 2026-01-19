@@ -5,7 +5,7 @@ export const metadata: Metadata = {
     title: "Kurumsal | EK Hukuk & Danışmanlık",
     description: "EK Hukuk Marmaris'in kuruluşu, uzman avukat kadromuzun vizyonu ve şeffaf hukuk anlayışımız hakkında bilgi edinin.",
     alternates: {
-        canonical: "https://ekhukuk.com/hakkimizda",
+        canonical: "https://aveminakarabudak.com/hakkimizda",
     },
 };
 

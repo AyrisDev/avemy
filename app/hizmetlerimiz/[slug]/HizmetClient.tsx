@@ -118,10 +118,9 @@ export default function HizmetDetay({ params, initialService }: { params: { slug
                 </motion.div>
             </section>
 
-            <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-24 py-32 relative z-10">
-                {/* Left Side: Content & FAQs */}
-                <div className="lg:col-span-8 space-y-32">
-
+            <div className="container mx-auto px-6 py-32 relative z-10">
+                {/* Centered Content & FAQs */}
+                <div className="max-w-4xl mx-auto space-y-32">
                     {/* Content Section */}
                     <section className="relative">
                         {service.Content ? (
@@ -221,73 +220,6 @@ export default function HizmetDetay({ params, initialService }: { params: { slug
                         </div>
                     </section>
                 </div>
-
-                {/* Right Side: Sticky Form */}
-                <aside className="lg:col-span-4 relative">
-                    <div className="lg:sticky lg:top-40">
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: 0.5, duration: 0.8 }}
-                            className="bg-[#111111] p-12 rounded-[40px] border border-white/5 shadow-2xl relative overflow-hidden group"
-                        >
-                            {/* Decorative Glow */}
-                            <div className="absolute top-0 right-0 w-48 h-48 bg-gold/10 blur-[80px] rounded-full -translate-y-24 translate-x-24 group-hover:bg-gold/20 transition-all duration-700" />
-
-                            <div className="relative z-10">
-                                <h3 className="text-3xl font-serif font-black mb-4 text-white">Danışmanlık Alın</h3>
-                                <p className="text-white/30 text-[11px] mb-12 uppercase font-black tracking-[0.4em]">Süreç Analizi Başlatın</p>
-
-                                <form className="space-y-10">
-                                    <div className="space-y-4">
-                                        <label className="block text-[10px] text-white/40 uppercase font-black tracking-widest pl-2">ADINIZ SOYADINIZ</label>
-                                        <input
-                                            type="text"
-                                            className="w-full bg-void/50 border border-white/10 rounded-2xl p-6 text-white focus:outline-none focus:border-gold/40 transition-all placeholder:text-white/5 backdrop-blur-sm"
-                                            placeholder="Ahmet Batur"
-                                        />
-                                    </div>
-                                    <div className="space-y-4">
-                                        <label className="block text-[10px] text-white/40 uppercase font-black tracking-widest pl-2">TELEFON VEYA E-POSTA</label>
-                                        <input
-                                            type="text"
-                                            className="w-full bg-void/50 border border-white/10 rounded-2xl p-6 text-white focus:outline-none focus:border-gold/40 transition-all placeholder:text-white/5 backdrop-blur-sm"
-                                            placeholder="info@aveminakarabudak.com"
-                                        />
-                                    </div>
-                                    <Button variant="gold" className="w-full py-8 rounded-2xl flex gap-4 items-center justify-center font-black text-[11px] tracking-[0.3em] uppercase hover:brightness-110 shadow-2xl shadow-gold/10 transform active:scale-95 transition-all">
-                                        <Send size={18} /> TALEBİ GÖNDER
-                                    </Button>
-                                </form>
-
-                                <div className="mt-12 pt-12 border-t border-white/5 text-center">
-                                    <div className="flex items-center justify-center gap-3 mb-6">
-                                        <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                                        <span className="text-[10px] text-white/30 font-bold uppercase tracking-widest">HIZLI YANIT SİSTEMİ AKTİF</span>
-                                    </div>
-                                    <p className="text-[10px] text-white/20 font-medium uppercase tracking-widest leading-relaxed px-4">
-                                        Verileriniz <Link href="/kvkk" className="text-gold/50 underline underline-offset-4 cursor-pointer hover:text-gold transition-colors">KVKK</Link> uyarınca korunmaktadır.
-                                    </p>
-                                </div>
-                            </div>
-                        </motion.div>
-
-                        {/* Secondary Card (Small Info) */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 1, duration: 0.8 }}
-                            className="mt-8 p-8 bg-gold/5 border border-gold/10 rounded-3xl flex items-center gap-6"
-                        >
-                            <div className="w-12 h-12 rounded-2xl bg-gold/10 flex items-center justify-center text-gold">
-                                <Gavel size={24} />
-                            </div>
-                            <div className="text-[10px] text-white/40 font-bold tracking-widest leading-relaxed uppercase">
-                                ÜCRETSİZ ÖN ANALİZ İÇİN <br /> <span className="text-white">FORMU DOLDURUN</span>
-                            </div>
-                        </motion.div>
-                    </div>
-                </aside>
             </div>
 
 

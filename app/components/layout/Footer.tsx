@@ -74,9 +74,19 @@ export const Footer = () => {
                     </div>
                 </div>
 
-                <div className="pt-12 border-t border-white/5 flex flex-col md:row items-center justify-between gap-6">
-                    <div className="text-white/20 text-[9px] font-bold tracking-[0.2em] uppercase">
-                        © {new Date().getFullYear()} Av. Emina KARABUDAK | EK Hukuk & Danışmanlık.
+                <div className="pt-12 border-t border-white/5 flex flex-col md:row items-center justify-between gap-8">
+                    <p className="text-white/20 text-[10px] font-bold tracking-[0.2em] uppercase">
+                        © {new Date().getFullYear()} EK HUKUK & DANIŞMANLIK. TÜM HAKLARI SAKLIDIR.
+                    </p>
+                    <div className="flex items-center gap-6">
+                        <a
+                            href="https://ayris.tech"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-white/20 text-[9px] font-bold tracking-[0.2em] uppercase hover:text-gold transition-colors flex items-center gap-2 group"
+                        >
+                            CREATED BY <span className="text-white/40 group-hover:text-gold transition-colors">AYRISTECH</span>
+                        </a>
                     </div>
                 </div>
             </div>

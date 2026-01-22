@@ -15,7 +15,7 @@ export interface Service {
 export const defaultPractices: Service[] = [
     {
         Title: "Ceza Hukuku",
-        Short_Description: "Soruşturma ve kovuşturma aşamalarında şüpheli, sanık veya mağdur müdafiiliği.",
+        Short_Description: "Soruşturma ve kovuşturma aşamalarında şüpheli, sanık müdafiiliği veya mağdur vekilliği.",
         Slug: "ceza-hukuku",
         iconElement: <Gavel className="text-gold" size={32} />,
         Content: `

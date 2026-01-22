@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+export const revalidate = 0;
 import BlogClient from "./BlogClient";
 import directus from "@/lib/directus";
 import { readItems } from "@directus/sdk";

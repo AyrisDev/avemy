@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+export const revalidate = 0;
 import ServicesListClient from "./ServicesListClient";
 import directus from "@/lib/directus";
 import { readItems } from "@directus/sdk";

@@ -88,7 +88,7 @@ export default function IletisimClient() {
                                 <div>
                                     <h3 className="text-lg font-bold mb-3 tracking-tight">Merkez Ofisimiz</h3>
                                     <p className="text-white/40 text-[15px] leading-relaxed font-light">
-                                        Marmaris / Muğla<br />
+                                        Siteler Mah. Yunus Nadi Cad. No:127 Daire:12 (5.Noter Üstü) Marmaris / Muğla<br />
                                         Türkiye
                                     </p>
                                 </div>

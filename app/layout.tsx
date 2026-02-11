@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -84,6 +85,12 @@ export default function RootLayout({
       >
         {children}
         <SpeedInsights />
+        <Script
+          defer
+          src="https://insight.ayris.tech/script.js"
+          data-website-id="01ce1f67-349d-4df9-b120-593f7edc5572"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );

@@ -11,18 +11,19 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
-    let posts: any = []; // Fixed: Changed from any[] to any to avoid TypeScript assignment error
+    let posts: any = [];
 
     try {
-        posts = await cachedRequest<any[]>('blog-posts', 
-            readItems('posts', {
-                fields: ['id', 'slug', 'title', 'seo_description', 'date_created', 'category'],
-                sort: ['-date_created'],
-                filter: {
-                    status: { _eq: 'published' }
-                }
-            })
-        );
+        // Bypass strict typing for readItems to avoid "never" type error
+        const query: any = readItems('posts' as any, {
+            fields: ['id', 'slug', 'title', 'seo_description', 'date_created', 'category'],
+            sort: ['-date_created'],
+            filter: {
+                status: { _eq: 'published' }
+            }
+        });
+
+        posts = await cachedRequest<any[]>('blog-posts', query);
     } catch (error) {
         console.error("Directus fetch error on server:", error);
     }

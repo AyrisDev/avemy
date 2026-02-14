@@ -3,6 +3,8 @@ import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import RouteTracker from "./components/RouteTracker";
+import PlausibleProvider from 'next-plausible';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -83,14 +85,21 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} antialiased`}
       >
-        {children}
-        <SpeedInsights />
-        <Script
-          defer
-          src="https://insight.ayris.tech/script.js"
-          data-website-id="01ce1f67-349d-4df9-b120-593f7edc5572"
-          strategy="afterInteractive"
-        />
+        <PlausibleProvider 
+          domain="aveminakarabudak.com" 
+          customDomain="http://plausible-vcwggswcogs8c04kwsocs84k.65.109.236.58.sslip.io"
+          selfHosted
+        >
+          <RouteTracker />
+          {children}
+          <SpeedInsights />
+          <Script 
+            defer 
+            data-domain="aveminakarabudak.com" 
+            src="/pl.js" 
+            strategy="afterInteractive"
+          />
+        </PlausibleProvider>
       </body>
     </html>
   );

@@ -15,6 +15,8 @@ export const metadata: Metadata = {
   },
 };
 
+export const revalidate = 3600; // Cache the page for 1 hour
+
 export default function Home() {
   return (
     <main className="relative min-h-screen bg-[#0A0A0A] selection:bg-gold selection:text-void">

@@ -3,7 +3,7 @@ import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import RouteTracker from "./components/RouteTracker";
+import RouteTracker from "@/components/RouteTracker";
 import PlausibleProvider from 'next-plausible';
 
 const geistSans = Geist({

@@ -4,6 +4,7 @@ import Script from "next/script";
 import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import RouteTracker from "@/components/RouteTracker";
+import PlausibleProvider from 'next-plausible';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -84,16 +85,22 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} antialiased`}
       >
+        <PlausibleProvider 
+          domain="aveminakarabudak.com" 
+          customDomain="https://analytics.ayris.tech"
+          selfHosted
+        >
           <RouteTracker />
           {children}
           <SpeedInsights />
-          {/* Plausible Self-Hosted Script */}
+          {/* Plausible Self-Hosted Script via Local Proxy */}
           <Script 
             defer 
             data-domain="aveminakarabudak.com" 
             src="/pl.js" 
             strategy="afterInteractive"
           />
+        </PlausibleProvider>
       </body>
     </html>
   );

@@ -10,13 +10,13 @@ if (DIRECTUS_TOKEN) {
     client = client.with(staticToken(DIRECTUS_TOKEN));
 }
 
-// Cached request helper
-export const cachedRequest = (key: string, request: any) => 
+// Cached request helper with proper generic type
+export const cachedRequest = <T>(key: string, request: any): Promise<T> => 
     unstable_cache(
         async () => client.request(request),
         [key],
         { revalidate: 3600, tags: [key] }
-    )();
+    )() as Promise<T>;
 
 // Function to get image URL
 export const getDirectusImage = (id: string) => {

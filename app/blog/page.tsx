@@ -11,10 +11,10 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
-    let posts: any[] = [];
+    let posts: any = []; // Fixed: Changed from any[] to any to avoid TypeScript assignment error
 
     try {
-        posts = await cachedRequest('blog-posts', 
+        posts = await cachedRequest<any[]>('blog-posts', 
             readItems('posts', {
                 fields: ['id', 'slug', 'title', 'seo_description', 'date_created', 'category'],
                 sort: ['-date_created'],

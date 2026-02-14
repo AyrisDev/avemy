@@ -14,8 +14,9 @@ export default async function Page() {
     let posts: any = [];
 
     try {
-        // Bypass strict typing for readItems to avoid "never" type error
-        const query: any = readItems('posts' as any, {
+        // Bypassing strict typing for readItems using @ts-ignore to avoid "never" type error
+        // @ts-ignore
+        const query = readItems('posts', {
             fields: ['id', 'slug', 'title', 'seo_description', 'date_created', 'category'],
             sort: ['-date_created'],
             filter: {
